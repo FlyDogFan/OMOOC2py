@@ -7,6 +7,7 @@
 - [代码 (_src)](_src/README.md)
 - [素材 (draft)](draft/README.md)
   + [教程该怎么写](draft/how2tutorial.md)
-  + [How to publish your own Gitbook](draft/how2gitbook.md)
+- [教程](guide/README.md)
+  + [How to publish your own Gitbook](guide/how2gitbook.md)
 - [有关](ABOUT.md)
 
