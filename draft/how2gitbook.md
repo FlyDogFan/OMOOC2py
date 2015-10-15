@@ -15,7 +15,7 @@ Before you create a gitbook, you should confirm that you have setup these tools 
 - Git
 - Calibre
 
->Some problems I face  in this part
+>Some problems I faced in this part
 >  
 >  1. Can't use "npm install gitbook-cli -g" to setup gitbook-cli. 
 > 
@@ -74,11 +74,11 @@ Guide
         
 10. Add the remote gitbook repo in config.
 
-        $ git remote add gitbook https://username:apitoken@git.gitbook.com/marshallshen/ruby-api-best-practices.git  
+        $ git remote add gitbook https://username:apitoken@git.gitbook.com/{{UserName}}/{{BookName}}.git  
         
     - config locates in .git
     - You can use $ open .git  to find it
-    -      
+          
 11. Pull the remote gitbook repo.
 
         $ git pull gitbook master 
@@ -111,12 +111,12 @@ Guide
           
             gitbook.com
             gitbooks.io
-(here  write the wrong shortname)
+(here I once wrote the wrong shortname)
 15. Push it to gitbook repo.
 16. Creat a new github repo @github
 17. Add the combination with github remote repo
 
-        $ git remote add origin https://github.com/xpgeng/show-me-code.git
+        $ git remote add origin https://github.com/{{UserName}}/{{RepoName}}.git
         
 18. Push your files to github
 
@@ -177,7 +177,17 @@ The problems I faced
     - 后来找了Samy Pesse的github主页，在上边留言说明了自己的问题。他很快就回复了我，在gitbook 的add webhook 下边加了一个手动添加到github webhook的连接。
     - 手动添加后，done！Thanks Samy！
   
+4. Cannot add Disqus
+    - 尽管已经按着教程添加了Disqus，但是还是加载不上。
+    - 流程没有问题，我就仔细看看看book.json文档，发现丢了 ｛ ！
+    - 并且少了   
+                     
+                  "disqus": { 
+    - 修改后，提交，更新，好用！
 
+5. 明明提交更新好了，但一夜过后又回到了之前的版本。
+   -  原因不明。
+   
 References
 ==
 
