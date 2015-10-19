@@ -1,5 +1,7 @@
-import csv
-from sys import argv
+#如何拼接push160要用的git config
+```
+import csv  
+from sys import argv  
 from os.path import exists
 
 script, csv_file, copy_file = argv
@@ -28,6 +30,5 @@ with open(csv_file, 'rU') as f:
 end = "\tfetch = +refs/heads/*:refs/remotes/OMOOC2py/*"
 config.write(end)
 
-print "done"
-
-#copy_file.close()        
+print "Done!"
+    
