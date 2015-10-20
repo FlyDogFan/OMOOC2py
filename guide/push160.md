@@ -87,6 +87,7 @@ print "done"
    > Year;Make;Model;Length   
      1997;Ford;E350;2,34    
      2000;Mercury;Cougar;2,38
+
 #任务分解
 
 - 读取csv文件
@@ -189,14 +190,7 @@ Ps: 你会发现基本上都是"笨办法", 就像大妈说的, 真的是只学�
 <https://en.wikipedia.org/wiki/Comma-separated_values>
 <https://docs.python.org/2/library/csv.html?highlight=csv#csv.writer>
 <https://www.python.org/dev/peps/pep-0305/>
-<http://stackoverflow.com/questions/17315635/csv-new-line-character-seen-in-unquoted-field-error>
-
-
-
-
-
-
-
+<http://stackoverflow.com/questions/17315635/csv-new-line-character-seen-in-unquoted-field-error>    
 
 
 
