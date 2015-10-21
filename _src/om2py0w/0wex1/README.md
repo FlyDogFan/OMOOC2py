@@ -1,4 +1,4 @@
-#MyDaily
+#README
 
 ##Introduction
 MyDaily是一个非常简单尚不完善的文本记录器.每天你只需要优雅的使用CLI打开这个script,紧跟提示,就可以非常容易地记录下对大妈的各种仰慕之情.例如,
