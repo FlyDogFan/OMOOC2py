@@ -11,21 +11,21 @@ if choice_command == "q": #here maybe can add several words
 #write the diary
 elif choice_command == "w":
 	input_content = raw_input('Let\'s write: ')
-	save_or_not = raw_input('Do you want to save this dairy? y/n: ')
+	save_or_not = raw_input('Do you want to save this diary? y/n: ')
 	
 	if save_or_not == "y":
-	    with open('dairy.md','a') as f:
+	    with open('diary.md','a') as f:
 	    	now = date.today()
 	        f.write("%s\n\n %s\n\n" %(now, input_content))
-            print "Yours dariy has been saved."
+            print "Yours diary has been saved."
 	elif save_or_not == "n":
-		print "Your dairy has been deleted..."
+		print "Your diary has been deleted..."
 		quit# here can add  write another one, maybe will use some modules
 		    #or defs... cycle?
 #show all the past diaries
 elif choice_command == "p":
-    with open('dairy.md','r') as f:
-        old_dairy = f.read()
+    with open('diary.md','r') as f:
+        old_diary = f.read()
         print old_dairy 
 else:
     print 'Sorry, please use correct command.'
