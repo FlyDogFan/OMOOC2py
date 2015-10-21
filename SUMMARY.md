@@ -7,7 +7,7 @@
 - [人生首秀](3rDemo/README.md)
 - [代码 (_src)](_src/README.md)  
   + [Push160'git config](_src/push160_beta.md)
-  + [MaDaily: a mini text recorder](_src/om2py0w/0wex1/README.md)
+  + [MyDaily: a mini text recorder](_src/om2py0w/0wex1/README.md)
      * [Script](_src/om2py0w/0wex1/mydaily.md) 
 - [素材 (draft)](draft/README.md)
   + [教程该怎么写](draft/how2tutorial.md)
