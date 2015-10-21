@@ -3,7 +3,7 @@ import sys
 from datetime import date
 
 
-choice_command = raw_input('Hey! buudy! write a new of quit,hmm...?> ')
+choice_command = raw_input('Hey! buddy! write a new of quit,hmm...?> ')
 
 if choice_command == "q": #here maybe can add several words
 	print 'See you later..'
