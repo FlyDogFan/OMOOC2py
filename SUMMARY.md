@@ -1,7 +1,8 @@
 # Summary
 
 - [Weekly Notes](0MOOC/README.md)
-  + [0wd4 note](0MOOC/0wd4.md) 
+  + [0wd4 Note](0MOOC/0wd4.md) 
+  + [1wd4 Note](0MOOC/1wd4.md)
 - [Foundation](1sTry/README.md)
   + [Python Tutorial]() 
 - [迭代ing](2nDev/README.md)
