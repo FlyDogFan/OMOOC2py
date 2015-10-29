@@ -7,8 +7,8 @@ MyDaily是一个非常简单尚不完善的文本记录器.每天你只需要优
 
 
 ##Installation
-- 首先,得装个Python.如果你问不装行不行,,,我这是个python脚本啊少年.
-- 其次,把这个酷炫无比的script下载到电脑里.
+- 首先,得装个Python.
+- 其次,把这个的script下载到电脑里.
      - [请怼我](https://github.com/xpgeng/Road-to-Py/commit/a3e8f45012431d4cea58243b035caf6e14a8de61)
 - 再次,打开Terminal.
 - 再再次, 把路径改到存放脚本的文件夹.
