@@ -3,6 +3,7 @@
 - [Weekly Notes](0MOOC/README.md)
   + [0wd4 Note](0MOOC/0wd4.md) 
   + [1wd4 Note](0MOOC/1wd4.md)
+  + [2wd4 Note](0MOOC/2wd4.md)
 - [Foundation](foundation/README.md)
   + [Class 学习笔记](foundation/Class.md) 
 - [迭代ing](2nDev/README.md)
