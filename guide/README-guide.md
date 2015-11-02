@@ -61,3 +61,4 @@ README各个部分的顺序安排也不尽相同, 以下是我的个人建议:
 - <https://gist.github.com/jxson/1784669>
 - <https://robots.thoughtbot.com/how-to-write-a-great-readme>
 - <http://stackoverflow.com/questions/2304863/how-to-write-a-good-readme>
+- <https://www.drupal.org/node/2181737>
