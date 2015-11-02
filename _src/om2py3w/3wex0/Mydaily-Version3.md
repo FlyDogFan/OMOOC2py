@@ -51,7 +51,7 @@ Mydaily已经更新到了version 3.0,也逐步从本地Terminal到本地GUI界�
    - 具体的区别待版本完成后会仔细分析.
 - 于是最初级的代码如下  
 
-```  
+```python  
 # _*_ coding:utf-8 _*_
 #! /usr/bin/env python
 '''
@@ -74,7 +74,7 @@ s.close()
 ``` 
 - 其中的`while True:`保证了server端可以一直开启接受client端的连接.
 
-```
+```python
 # _*_ coding:utf-8 _*_
 #! /usr/bin/env python
 '''
@@ -118,7 +118,7 @@ def save(data):
    - 在client显示server储存的内容.
 - 代码
 
-```
+```python
 # _*_ coding:utf-8 _*_
 #! /usr/bin/env python
 '''
@@ -159,7 +159,7 @@ if __name__=="__main__":
     main()  
 
 ``` 
-```
+```python
 # _*_ coding:utf-8 _*_
 #! /usr/bin/env python
 '''
