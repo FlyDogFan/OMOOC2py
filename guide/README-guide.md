@@ -50,7 +50,7 @@ README各个部分的顺序安排也不尽相同, 以下是我的个人建议:
 - 每行79个字符.
 - 待补充
 
-##EXamples
+##Examples
 - [GNU](https://robots.thoughtbot.com/how-to-write-a-great-readme)
 - [Apache HTTP Server](http://svn.apache.org/repos/asf/httpd/httpd/trunk/README)
 
