@@ -1,4 +1,4 @@
-#Oh-my-Zsh Guide
+#A Guide of Oh-my-zsh
 
     工欲善其事，必先利其器!
 
