@@ -133,9 +133,12 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
      ```
      ![my theme](http://7xnwxz.com1.z0.glb.clouddn.com/my-theme.png)
 
+##Debug
+- 将本文章push到gitbook一直不成功, 找了半宿加一上午的毛病,才发现文件的首字母大写了, 写到SUMAARY.MD里的是小写的. 虽然本地能够在SUMMARY.MD文件中点击打开打开, 但是push到gitbook后,却识别不了文件! 我这版本退回, 删除, pull, push,一通大招下去, 结果..是这么回事...好了.. 我去吐血了.
+
 ##更新
 151104  编辑  
-151105  修改   坑:push到gitbook一直不成功, 找了半宿加一上午的毛病,才发现文件的首字母大写了, 写到SUMAARY.MD里的是小写的. 虽然本地能够通过SUMMARY.MD打开, 但是push到gitbook后,却识别不了文件! 我这版本退回, 删除, pull, push,一通大招下去, 结果.. 我去吐血了.
+151105  修改   
 
 
 ##References
