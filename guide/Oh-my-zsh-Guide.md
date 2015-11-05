@@ -79,10 +79,10 @@
 
 |Alias	|Command|
 |------|:-----:|
-|g  |git  |
-|ga	|git add|
+|g     |git  |
+|ga	   |git add|
 |gaa	|git add --all|
-|gc	    |git commit -v
+|gc	   |git commit -v
 |gp	    |git push|
 
 ###Add aliases
@@ -94,6 +94,7 @@
           alias la='ls -a'
 
 - So easy!
+- Remark:在这里我遇到了一个坑, 在添加别名的时候`' '`会变成中文标点符号.目前的解决办法就是把别的行的`' '`复制过来.我觉得是输入法的问题. 但是各种调试还未解决.这里算留个坑. 日后给出详细的分析, 解决办法.
 
 ###Change themes
 - `Oh-my-zsh`还提供各种主题, 在文件`~/.zshrc`中可以看到如下代码:
@@ -105,19 +106,21 @@
 ##My Configuration
 因为我也是刚刚开始折腾, 目前的配置还很初级, 随着各种类型的编程需求, 也会逐渐丰富配置, 越用越顺手.
 ###Plugins
+目前我只添加的以下几个插件:
 - git 
 - brew
 - github
 
 ###Theme
-- 由于主题众多, 但又不一定每个主题完全让自己满意, 所以, 我自制了属于自己的主题.
+- 由于主题众多, 并不一定每个主题完全让自己满意, 所以, 我自制了一个主题.
 - 方法如下:
      - 挑选功能. 去主题列表里找到自己需要的功能.
      - 在Terminal中输入`open ~/.oh-my-zsh`
      - 在Themes文件夹中新建一个`theme_name.zsh-theme`, 然后把需要的功能复制到里面, 保存好.
+         - 近期会补充一下每行代码的作用是什么. 
      - 更改主题, 重新打开一个Terminal, 检查是否如自己要求.
      - OK!
-     - 一下是我的主题代码以及图片展示.
+     - 以下是我的主题代码以及效果图.
      
      ```
      local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ %s)"
@@ -131,8 +134,8 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
      ![my theme](http://7xnwxz.com1.z0.glb.clouddn.com/my-theme.png)
 
 ##更新
-151104  沈浪编辑
-
+151104  编辑
+151105  修改
 ##References
 - <http://zhuanlan.zhihu.com/mactalk/19556676>
 - [oh-my-zsh](http://ohmyz.sh/)
