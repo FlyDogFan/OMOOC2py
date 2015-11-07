@@ -18,4 +18,5 @@
   + [拼接git config实现"one command, 160 pushed"](guide/push160.md)
   + [How to write a good README](guide/README-guide.md)
   + [A Guide of Oh-my-zsh](guide/Oh-my-zsh-guide.md) 
+  + [Tmux配置指南](guide/Tmux-Guide.md)
 - [有关](ABOUT.md)
