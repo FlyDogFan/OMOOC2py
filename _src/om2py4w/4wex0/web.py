@@ -7,9 +7,12 @@ Mydaily-web-version-1.0
 
 """
 
-#import sys
+import sys
 from bottle import * # 慎用, 会引入很多未知的东西, 或者全局变量神马的.
-from time import gmtime, strftime
+from jinja2 import Template
+
+reload(sys)# 这是什么意思?
+sys.setdefaultencoding('utf-8')
 
 #from bottle import route, get, post, request, error, run
 
@@ -26,7 +29,6 @@ def mydaily():
         </form>
     '''	 
 
-
 @route('/mydaily', method='POST')
 def save_mydaily():
     daily_content = request.forms.get('content')
@@ -37,14 +39,16 @@ def save_mydaily():
             f.close() 
         with open('diary.md','r') as f:
             previous_content = f.read()
-            return template('''
-            	                <form action="/mydaily" method="post">
-                                    日记: <input name ="content" type="text" />
-                                    <input value ="保存" type="submit" />
-                                </form>
-            	Previous diary: \n {{text}} ''', text= previous_content)             
-            f.close()       
-        #print previous_content, template('Previous diary: {{name}}, name=previous_content)
+            template=Template('''
+            	<form action="/mydaily" method="post">
+                    日记: <input name ="content" type="text" />
+                    <input value ="保存" type="submit" />
+                </form>
+            	Previous diary: \n\n {{name}}''')
+            return template.render(name=previous_content)
+            f.close()
+        #print previous_content, 
+        #template('Previous diary: {{name}}, name=previous_content)
     
 
 #while True:
