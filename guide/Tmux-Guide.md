@@ -175,15 +175,23 @@ W$呢? Sorry.....
 
 ##更新
 151107 编辑
+151110 修改了参考文献.添加了官方文档, 并对参考文献做了适当说明.
 
 ##References
+- [1][官方文档](http://www.openbsd.org/cgi-bin/man.cgi/OpenBSD-current/man1/tmux.1?query=tmux&sec=1)
+- [2]*<http://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/>
+  - 很多中文教程都是参考的这篇博文, 其中的解释非常清楚. 
+- [3]*<http://www.cnblogs.com/congbo/archive/2012/08/30/2649420.html>
+  - 这是一篇中文的指南, 其中对server, sesseion, window, pane解释的非常清楚. 
+- <https://gist.github.com/barbour-em/e6fffc31482625cc4e0c>
+  - 这篇一个非常完整的配置文件, 但是没有详细的解释, 对于配置有更高要求的同学可以看看.
+- <http://lukaszwrobel.pl/blog/tmux-tutorial-split-terminal-windows-easily>
+  - 很多教程也参考了这篇文章的内容. 
 - <http://blog.chinaunix.net/uid-26285146-id-3252286.html>
 - <http://os.51cto.com/art/201410/453671.htm>
 - <http://blog.jobbole.com/87584/>
+   - 这篇又有些新的东西值得日后挖掘. 
 - <http://blog.csdn.net/jianbinhe1012/article/details/7741727>
 - <http://media.pragprog.com/titles/bhtmux/code/config/tmux.conf>
 - <http://unix.stackexchange.com/questions/66606/tmux-not-sourcing-my-tmux-conf>
-- *<http://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/>
-- <https://gist.github.com/barbour-em/e6fffc31482625cc4e0c>
-- <http://lukaszwrobel.pl/blog/tmux-tutorial-split-terminal-windows-easily>
-- *<http://www.cnblogs.com/congbo/archive/2012/08/30/2649420.html>
+   - 配置无法生效的时候参考了这篇的解决办法. 
