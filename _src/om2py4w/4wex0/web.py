@@ -12,14 +12,18 @@ import sys
 from bottle import * # 慎用, 会引入很多未知的东西, 或者全局变量神马的.
 from jinja2 import *  #Template, Environment, PackageLoader
 
-reload(sys)# 这是什么意思?
+reload(sys)
 sys.setdefaultencoding('utf-8')
+
+template_loader = FileSystemLoader('templates')
+env = Environment(loader=template_loader)
 
 #from bottle import route, get, post, request, error, run
 
 @route('/mydaily')
 def mydaily():
-    return template('home.html')
+    template_1 = env.get_template('home.html')
+    return template_1.render()
 
 
 @route('/mydaily', method='POST')
@@ -32,7 +36,8 @@ def save_mydaily():
             f.close() 
         with open('diary.md','r') as f:           
             previous_content = f.read()
-            return template('template.html',name=previous_content)
+            template_2 = env.get_template('template.html')
+            return template_2.render(name=previous_content)
             f.close()
 
 
