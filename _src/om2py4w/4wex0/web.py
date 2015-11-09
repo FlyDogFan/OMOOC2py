@@ -3,31 +3,24 @@
 """
 Mydaily-web-version-1.0
 使用bottle框架
+加入jinja2
 开始时间: 2015.11.5 10:30
 
 """
 
 import sys
 from bottle import * # 慎用, 会引入很多未知的东西, 或者全局变量神马的.
-from jinja2 import Template
+from jinja2 import *  #Template, Environment, PackageLoader
 
 reload(sys)# 这是什么意思?
 sys.setdefaultencoding('utf-8')
 
 #from bottle import route, get, post, request, error, run
 
-#@route('/hello/<name>')
-#def index(name):
-#    return template('<b>Hello {{name}}</b>!', name=name)
-
 @route('/mydaily')
 def mydaily():
-    return '''
-	    <form action="/mydaily" method="post">
-            日记: <input name ="content" type="text" />
-            <input value ="保存" type="submit" />
-        </form>
-    '''	 
+    return template('home.html')
+
 
 @route('/mydaily', method='POST')
 def save_mydaily():
@@ -37,24 +30,11 @@ def save_mydaily():
         with open('diary.md','a') as f:
             f.write("%s\n\n" %daily_content)
             f.close() 
-        with open('diary.md','r') as f:
+        with open('diary.md','r') as f:           
             previous_content = f.read()
-            template=Template('''
-            	<form action="/mydaily" method="post">
-                    日记: <input name ="content" type="text" />
-                    <input value ="保存" type="submit" />
-                </form>
-            	Previous diary: \n\n {{name}}''')
-            return template.render(name=previous_content)
+            return template('template.html',name=previous_content)
             f.close()
-        #print previous_content, 
-        #template('Previous diary: {{name}}, name=previous_content)
-    
 
-#while True:
-    
-
-#previous_content.append(daily_content)
 
 #@error(404)# 404
 #def error404(error):

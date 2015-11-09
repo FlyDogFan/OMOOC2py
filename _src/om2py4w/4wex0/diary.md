@@ -1,30 +1,32 @@
-这是笔记
+换行啊!
 
-这是第二行笔记
+再换!
 
-但是为什么第二行 不换行
+对方水电费
 
-下去
+再次尝试!
 
-jinja
+看看输入
 
-jinja
+试试!
 
-jinja
+试试!???
 
-jinja
+for 循环我都上了
 
-jinjaaaa
+rfvbn
 
-4rfgb6yhn
+1231231
+
+太容易
+
+太容易
+
+太容易!
 
 shenme
 
-123123
+ist sdfsdf
 
-123123
-
-dfsdfsd123123
-
-哈哈哈
+sdfsfsdfs
 
