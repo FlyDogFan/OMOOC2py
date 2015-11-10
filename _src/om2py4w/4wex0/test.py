@@ -1,14 +1,22 @@
-from gevent import monkey; monkey.patch_all()
+from bottle import request, Bottle, abort
+app = Bottle()
 
-from time import sleep
-from bottle import route, run
+@app.route('/websocket')
+def handle_websocket():
+    wsock = request.environ.get('wsgi.websocket')
+    if not wsock:
+        abort(400, 'Expected WebSocket request.')
 
-@route('/stream')
-def stream():
-    yield 'START'
-    sleep(3)
-    yield 'MIDDLE'
-    sleep(5)
-    yield 'END'
+    while True:
+        try:
+            message = wsock.receive()
+            wsock.send("Your message was: %r" % message)
+        except WebSocketError:
+            break
 
-run(host='0.0.0.0', port=8080, server='gevent')
+from gevent.pywsgi import WSGIServer
+from geventwebsocket import WebSocketError
+from geventwebsocket.handler import WebSocketHandler
+server = WSGIServer(("localhost", 8080), app,
+                    handler_class=WebSocketHandler)
+server.serve_forever()

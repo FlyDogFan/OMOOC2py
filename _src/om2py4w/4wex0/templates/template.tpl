@@ -10,6 +10,17 @@
         日记: <input name ="content" type="text" />
         <input value ="保存" type="submit" />
     </form>
-    <p> Previous content: {{ name }} </p>
+    <table>
+    <p>
+    Previous content:
+    %for row in {{rows}}:
+        <tr>    
+        % for col in row:
+            <td>{{col}}</td>
+        %end
+        </tr>
+    %end
+    </p>
+    </table>
 </body>
 </html>

@@ -7,7 +7,7 @@ import socket
 def main():
 
     BUF_SIZE=1024  
-    server_address = ('127.0.0.1', 7777)  
+    server_address = ('localhost', 8080)  
     client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  
   
     while True:  
