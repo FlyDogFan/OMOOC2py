@@ -3,23 +3,14 @@
 '''
 客户端
 '''
-import socket  
-def main():
+from websocket import create_connection
 
-    BUF_SIZE=1024  
-    server_address = ('localhost', 8080)  
-    client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  
-  
-    while True:  
-        message = raw_input('> ')  
-        if not message:  
-            break  
-        client.sendto(message, server_address)  
-    
-        if message == 'pre':
-    	    data = client.recv(BUF_SIZE)
-    	    print data
-    client.close()
+ws = create_connection("ws://localhost:8080/mydaily")
+msg = raw_input('> ')
+ws.send(msg)
+print "Sent"
+print "Receiving..."
+result =  ws.recv()
+print "Received '%s'" % result
+ws.close()
 
-if __name__=="__main__":
-    main()  

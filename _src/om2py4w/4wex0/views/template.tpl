@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <title>MyDaily Version4.0</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -10,17 +10,7 @@
         日记: <input name ="content" type="text" />
         <input value ="保存" type="submit" />
     </form>
-    <table>
-    <p>
-    Previous content:
-    %for row in {{rows}}:
-        <tr>    
-        % for col in row:
-            <td>{{col}}</td>
-        %end
-        </tr>
-    %end
-    </p>
-    </table>
+    <h1>Previous diary:</h1>
+    <textarea rows="35" cols= "100"> {{rows}} </textarea>
 </body>
 </html>
