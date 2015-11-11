@@ -10,12 +10,8 @@ msg = raw_input('> ')
 ws.send(msg)
 print "Sent"
 print "Receiving..."
-result =  ws.recv()
+result =  ws.recv() 
+print result
 
-for item in result.split():
-	print item
-
-#for item in result:
-#    print "Received '%s'" % item
 ws.close()
 

@@ -52,6 +52,17 @@ def fetch_data():
     db.close()
 
 
+def only_fetch_data():
+    """ fetch data from database
+        add ':' between every item
+    """
+    db = sqlite3.connect('mydaily_data.db')
+    c = db.cursor()
+    c.execute('SELECT * FROM mydaily_data')
+    b = c.fetchall()
+    return b
+
+
 @app.route('/')
 @app.route('/mydaily')
 def mydaily():
@@ -84,7 +95,7 @@ def client():
         try:
             message = wsock.receive()
             if message == "pre":
-            	previous_content = fetch_data()
+            	previous_content = only_fetch_data()
                 wsock.send(previous_content)
                 sleep(3)
                 wsock.send(previous_content)
