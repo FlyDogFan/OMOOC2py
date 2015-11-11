@@ -2,27 +2,28 @@
 # -*- coding: utf-8 -*-
 """
 Mydaily-web-version-1.0
-使用bottle框架
-加入jinja2
-加入 Database
-开始时间: 2015.11.5 10:30
-
+Author Shenlang
+Start: 2015.11.5 10:30
+add: bottle 
+     jinja2
+     Database
+     websocket
 """
 
-import sys, sqlite3, json
-from datetime import date
-from bottle import * # 慎用, 会引入很多未知的东西, 或者全局变量神马的.
-from jinja2 import *  #Template, Environment, PackageLoader
-from datetime import date
+import sys, sqlite3
+from bottle import Bottle, route, abort, request  
+from jinja2 import Template, Environment, PackageLoader ,FileSystemLoader
 from gevent import monkey; monkey.patch_all()
 from time import sleep
+from datetime import date
+
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 app = Bottle()
 
-template_loader = FileSystemLoader('views')#文件夹并不一定非得是'views'
+template_loader = FileSystemLoader('views')
 env = Environment(loader=template_loader)
 
 
@@ -74,6 +75,8 @@ def mydaily():
 
 @app.route('/mydaily', method='POST')
 def save_mydaily():
+    """ receive input and show database content in the browser
+    """ 
     daily_content = request.forms.get('content')
     now = date.today()
     data = daily_content
@@ -88,6 +91,8 @@ def save_mydaily():
 
 @app.route('/client')
 def client():
+    """This is designed for terminal interaction.
+    """
     wsock = request.environ.get('wsgi.websocket')
     if not wsock:
         abort(400, 'Expected WebSocket request.')
@@ -106,7 +111,6 @@ def client():
 from gevent.pywsgi import WSGIServer
 from geventwebsocket import WebSocketError
 from geventwebsocket.handler import WebSocketHandler
-
 
 server = WSGIServer(("localhost", 8080), app,
                     handler_class=WebSocketHandler)
