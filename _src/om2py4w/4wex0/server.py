@@ -84,7 +84,7 @@ def save_mydaily():
     if daily_content:
         data = now, daily_content.decode("utf-8")
         insert_data(data)
-        previous_content = fetch_data()       
+        previous_content = fetch_data()
         template_2 = env.get_template('template.tpl')
         return template_2.render(rows=previous_content)
 
