@@ -35,6 +35,7 @@ README各个部分的顺序安排也不尽相同, 以下是我的个人建议:
 - Installation and Operating instrcutions.(***How***)
 - Authors information.(***Who***)
 - Copyright and licensing information.
+   - 目前分为三种license  
 - Bugs.
 - Acknwoledgements.
 - Developing log.(***When***)

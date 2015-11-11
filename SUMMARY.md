@@ -10,6 +10,7 @@
 - [迭代ing](2nDev/README.md)
   + [MyDaily](_src/om2py0w/0wex1/README.md)
   + [MyDaily-Net](_src/om2py3w/3wex0/Mydaily-Version3.md)
+  + [MyDaily-Web](_src/om2py4w/4wex0/Mydaily-web-guide.md)
 - [积累](draft/README.md)
   + [每周一逛](draft/surf-per-week.md)
      + [2wd4](surf-others-repo/2wd4.md) 
