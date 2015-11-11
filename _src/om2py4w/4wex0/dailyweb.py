@@ -38,6 +38,7 @@ def insert_data(data):
 
 def fetch_data():
     """fetch data from database
+       add ':' between every item
     """
     db = sqlite3.connect('mydaily_data.db')
     #db.row_factory = sqlite3.Row

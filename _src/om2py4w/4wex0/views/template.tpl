@@ -11,6 +11,10 @@
         <input value ="保存" type="submit" />
     </form>
     <h1 style="left:3px;text-align:center;"> Previous diary </h1>
-    <textarea row = "40" style="left:3px;text-align:center;"> {{ rows }} </textarea>
+    <table row = "40" style="left:3px;text-align:center;">
+    {% for item in rows %}
+        {{ item }}</br>
+    {% endfor %}
+    </table>
 </body>
 </html>

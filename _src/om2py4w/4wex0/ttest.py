@@ -19,7 +19,7 @@ c = db.cursor()
 now = date.today()
 daily_content = "中文"
 data = now, daily_content.decode("utf-8")
-c.execute('INSERT INTO mydaily_data VALUES (?,?)', data)
+#c.execute('INSERT INTO mydaily_data VALUES (?,?)', data)
 db.commit()
 c.execute('SELECT * FROM mydaily_data')
 previous_content = c.fetchall()
@@ -29,10 +29,6 @@ previous_content = c.fetchall()
 #print previous_content.keys()
 #print previous_content['diary_content']
 #print previous_content
-b = []
-for member in previous_content:
-    a = "%s:%s\n" % member
-    b.append(a)  
-for item in b:
-	print item
+for item in previous_content:
+    print item
 db.close()
