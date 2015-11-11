@@ -81,13 +81,14 @@ def client():
     wsock = request.environ.get('wsgi.websocket')
     if not wsock:
         abort(400, 'Expected WebSocket request.')
-    while Ture:
+    while True:
         try:
             message = wsock.receive()
             if message == "pre":
-                wsock.send("none")
+            	previous_content = fetch_data()
+                wsock.send(previous_content)
                 sleep(3)
-                wsock.send("none")
+                wsock.send(previous_content)
         except WebSocketError:
             break        
 
