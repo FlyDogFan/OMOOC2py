@@ -41,7 +41,6 @@ def fetch_data():
        add ':' between every item
     """
     db = sqlite3.connect('mydaily_data.db')
-    #db.row_factory = sqlite3.Row
     c = db.cursor()
     c.execute('SELECT * FROM mydaily_data')
     b = c.fetchall()
@@ -62,7 +61,6 @@ def mydaily():
     return template_1.render()
     
 
-
 @app.route('/mydaily', method='POST')
 def save_mydaily():
     daily_content = request.forms.get('content')
@@ -75,6 +73,7 @@ def save_mydaily():
         previous_content = fetch_data()       
         template_2 = env.get_template('template.tpl')
         return template_2.render(rows=previous_content)
+
 
 @app.route('/client')
 def client():
@@ -103,14 +102,4 @@ server = WSGIServer(("localhost", 8080), app,
 
 server.serve_forever()
 
-
-
-
-#@error(404)# 404
-#def error404(error):
-#    return 'Nothing here, sorry'
-
-#if __name__ == '__main__':
-#    debug(True)
-#    run(host="127.0.0.1", port=8080, reloader=True)
 
