@@ -37,25 +37,9 @@ def insert_data(data):
     db.close()
 
 
+
 def fetch_data():
-    """fetch data from database
-       add ':' between every item
-    """
-    db = sqlite3.connect('mydaily_data.db')
-    c = db.cursor()
-    c.execute('SELECT * FROM mydaily_data')
-    b = c.fetchall()
-    d = []
-    for member in b:
-        a = "%s : %s\n"% member
-        d.append(a)
-    return d 
-    db.close()
-
-
-def only_fetch_data():
     """ fetch data from database
-        add ':' between every item
     """
     db = sqlite3.connect('mydaily_data.db')
     c = db.cursor()
@@ -84,7 +68,7 @@ def save_mydaily():
     if daily_content:
         data = now, daily_content.decode("utf-8")
         insert_data(data)
-        previous_content = fetch_data()
+        previous_content = only_fetch_data()
         template_2 = env.get_template('template.tpl')
         return template_2.render(rows=previous_content)
 
@@ -100,7 +84,7 @@ def client():
         try:
             message = wsock.receive()
             if message == "pre":
-            	previous_content = only_fetch_data()
+            	previous_content = fetch_data()
                 wsock.send(previous_content)
                 sleep(3)
                 wsock.send(previous_content)

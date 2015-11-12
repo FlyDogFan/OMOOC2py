@@ -13,7 +13,7 @@
     <h1 style="left:3px;text-align:center;"> Previous diary </h1>
     <p row = "40" style="left:3px;text-align:center;">
     {% for item in rows %}
-        {{ item }}</br>
+        {{item[0]}}: {{item[1]}}</br>
     {% endfor %}
     </p>
 </body>
