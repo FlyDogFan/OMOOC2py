@@ -213,3 +213,5 @@ def receive_and_save_mydaily():
 - <http://stackoverflow.com/questions/10316374/bottle-websocket>
 - <https://websockets.readthedocs.org/en/latest/api.html>
    - websocket的官方文档.   
+- <https://www.digitalocean.com/community/tutorials/how-to-use-the-bottle-micro-framework-to-develop-python-web-apps>
+   - 通过实例介绍了如何生成数据库, 添加数据库到模板等.  
