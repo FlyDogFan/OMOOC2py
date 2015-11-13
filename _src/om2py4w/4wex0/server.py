@@ -11,7 +11,7 @@ add: bottle
 """
 
 import sys, sqlite3
-from bottle import Bottle, route, abort, request  
+from bottle import Bottle, route, abort, request, response  
 from jinja2 import Template, Environment, PackageLoader ,FileSystemLoader
 from gevent import monkey; monkey.patch_all()
 from time import sleep
@@ -46,9 +46,30 @@ def fetch_data():
     c.execute('SELECT * FROM mydaily_data')
     b = c.fetchall()
     return b
+def chech_login(username, password):
+    if username == "xpgeng@126.com" and password =="123":
+        return True
+    else:
+        return False
+    
 
+@app.route('/login')
+def login():
+    """use bootstrap to design a homepage
+    """
+    template_home = env.get_template('signin.tpl')
+    return template_home.render()
 
-@app.route('/')
+@app.route('/login', method='POST')
+def do_login():
+    input_email = request.forms.get('inputemail')
+    password = request.forms.get('password')
+    if chech_login(input_email, password):
+        response.status = 303
+        response.set_header('Location', '/mydaily')
+    else:
+        return "<p>Login failed.</p>"
+
 @app.route('/mydaily')
 def mydaily():
     """home page

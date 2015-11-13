@@ -65,7 +65,7 @@ def receive_and_save_mydaily():
            - 问题肯定是出在编码上了. 可是搜了之后都是让转码.可是我已经各处都设定了编码为utf-8.为什么还要转码? 
            - 转完之后还要解码.解码的时候list 又用不了.!!! 
            - 在insert数据的时候加上`decode(utf-8)`, 就可以输入中文.
-   - 我将写出数据库写成了一个函数
+   - 将`写入数据库`写成函数
 
    ```
    def insert_data(data):
@@ -215,3 +215,13 @@ def receive_and_save_mydaily():
    - websocket的官方文档.   
 - <https://www.digitalocean.com/community/tutorials/how-to-use-the-bottle-micro-framework-to-develop-python-web-apps>
    - 通过实例介绍了如何生成数据库, 添加数据库到模板等.  
+
+
+##Debug
+- 加入登录界面, 但是链接一直无法跳转到输入界面.
+   - Html中, `id`跟`name`的区别
+   - 用response跳转
+   - 用redirect跳转
+   - 以上都不好用.  
+   - 接下来要尝试用bootstrap解析?模板, 
+   - 增加更多界面. 
