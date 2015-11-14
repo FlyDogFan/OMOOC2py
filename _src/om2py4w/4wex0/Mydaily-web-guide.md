@@ -190,7 +190,26 @@ def receive_and_save_mydaily():
    - 目前还有一个问题没有解决了.
       - server端返回的历史数据到client端接受的时候, 全变成了`str`, 所以导致读出来的数据都是编码且不是成条的, 而是每个字符为单位的.
       - 还在debuging!
+   
+   - 看到很多学员用到了`requests`, 代码非常简单, 于是尝试使用`requests`改写client.py.代码如下.
+   
+   ```Python
+   import requests
+   def main():
+        r = requests.get('http://localhost:8080/client')
+   print r.content
 
+  if __name__ == '__main__':
+	    main()
+	
+	```
+   - 同样sever端只需要return数据库中的data即可. 这里感谢小赖教我的一条语句.
+   
+   > content = '\n'.join([row[0]+':'+row[1] for row in c.fetchall()])
+   
+   - 真不知道还能这么写. ;-)
+ 
+ ![](http://7xnwxz.com1.z0.glb.clouddn.com/mydaily-web-example.png)
 
 ##感想
  - 遇到问题, 解决问题, 是有快感的.
@@ -201,12 +220,10 @@ def receive_and_save_mydaily():
 
 
 ##References
-- <http://bottlepy.org/docs/dev/index.html>
-    - Bottle的官方文档  
-- <http://jinja.pocoo.org/>
-    - Jinja2的官方文档 
-- <https://docs.python.org/2.7/library/sqlite3.html>
-   - sqlite3的官方文档.  
+- [Bottle官方文档](http://bottlepy.org/docs/dev/index.html)  
+- [Jinja2官方文档](http://jinja.pocoo.org/) 
+- [sqlite3官方文档](https://docs.python.org/2.7/library/sqlite3.html)
+- [requests官方文档](http://docs.python-requests.org/en/latest/user/intro/)
 - *<https://www.jeffknupp.com/blog/2014/03/03/what-is-a-web-framework/>
    - 系统的介绍了web framework 
 - <https://en.wikipedia.org/wiki/Web_application_framework>
