@@ -29,7 +29,7 @@
 - 浏览器端输入:`http://localhost:8080/mydaily`
      - 输入日记
 - 运行client.py.
-     - 输入`pre`查看历史记录.
+     - 查看历史记录.
 
 ##Author
 - 沈浪
@@ -42,4 +42,5 @@
 
 ##Bugs
 - 目前client端得到的输入还是乱码. 正在修理ing.
+   - 改用requests, 已经搞定! 
        
