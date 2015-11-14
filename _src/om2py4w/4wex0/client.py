@@ -2,18 +2,14 @@
 #! /usr/bin/env python
 """
 client
-
-
+改用requests
 """
-from websocket import create_connection
+import requests
 
-ws = create_connection("ws://localhost:8080/client")
-msg = raw_input('> ')
-ws.send(msg)
 
-print "Receiving..."
-result =  ws.recv() 
-print result
+def main():
+    r = requests.get('http://localhost:8080/client')
+    print r.content
 
-ws.close()
-
+if __name__ == '__main__':
+	main()

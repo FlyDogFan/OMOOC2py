@@ -14,7 +14,6 @@ import sys, sqlite3
 from bottle import Bottle, route, abort, request, response  
 from jinja2 import Template, Environment, PackageLoader ,FileSystemLoader
 from gevent import monkey; monkey.patch_all()
-from time import sleep
 from datetime import date
 
 
@@ -46,6 +45,8 @@ def fetch_data():
     c.execute('SELECT * FROM mydaily_data')
     b = c.fetchall()
     return b
+
+
 def chech_login(username, password):
     if username == "xpgeng@126.com" and password =="123":
         return True
@@ -89,7 +90,7 @@ def save_mydaily():
     if daily_content:
         data = now, daily_content.decode("utf-8")
         insert_data(data)
-        previous_content = only_fetch_data()
+        previous_content = fetch_data()
         template_2 = env.get_template('template.tpl')
         return template_2.render(rows=previous_content)
 
@@ -98,19 +99,13 @@ def save_mydaily():
 def client():
     """This is designed for terminal interaction.
     """
-    wsock = request.environ.get('wsgi.websocket')
-    if not wsock:
-        abort(400, 'Expected WebSocket request.')
-    while True:
-        try:
-            message = wsock.receive()
-            if message == "pre":
-            	previous_content = fetch_data()
-                wsock.send(previous_content)
-                sleep(3)
-                wsock.send(previous_content)
-        except WebSocketError:
-            break        
+    content = ''
+    db = sqlite3.connect('mydaily_data.db')
+    c = db.cursor()
+    c.execute('SELECT diary_content FROM mydaily_data;')
+    content = '\n'.join([row[0].encode('utf-8') for row in c.fetchall()])
+    c.close()
+    return content     
 
 
 from gevent.pywsgi import WSGIServer
