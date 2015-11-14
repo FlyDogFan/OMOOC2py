@@ -13,7 +13,7 @@ add: bottle
 import sys, sqlite3
 from bottle import Bottle, route, abort, request, response  
 from jinja2 import Template, Environment, PackageLoader ,FileSystemLoader
-from gevent import monkey; monkey.patch_all()
+from gevent import monkey;monkey.patch_all()
 from datetime import date
 
 
@@ -102,14 +102,13 @@ def client():
     content = ''
     db = sqlite3.connect('mydaily_data.db')
     c = db.cursor()
-    c.execute('SELECT diary_content FROM mydaily_data;')
-    content = '\n'.join([row[0].encode('utf-8') for row in c.fetchall()])
+    c.execute('SELECT * FROM mydaily_data;')
+    content = '\n'.join([row[0]+':'+row[1] for row in c.fetchall()])
     c.close()
-    return content     
+    return content
 
 
 from gevent.pywsgi import WSGIServer
-from geventwebsocket import WebSocketError
 from geventwebsocket.handler import WebSocketHandler
 
 server = WSGIServer(("localhost", 8080), app,
