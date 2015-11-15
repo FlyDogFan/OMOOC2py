@@ -63,7 +63,7 @@ def login():
 
 @app.route('/login', method='POST')
 def do_login():
-    input_email = request.forms.get('inputemail')
+    input_email = request.forms.get('email')
     password = request.forms.get('password')
     if chech_login(input_email, password):
         response.status = 303

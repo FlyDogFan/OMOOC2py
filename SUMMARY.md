@@ -5,6 +5,7 @@
   + [1wd4 Note](0MOOC/1wd4.md)
   + [2wd4 Note](0MOOC/2wd4.md)
   + [3wd4 Note](0MOOC/3wd4.md)
+  + [4wd4 Note](0MOOC/4wd4.md)
 - [Foundation](foundation/README.md)
   + [Class 学习笔记](foundation/Class.md) 
 - [迭代ing](2nDev/README.md)
