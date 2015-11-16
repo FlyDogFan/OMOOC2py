@@ -58,6 +58,11 @@
      > MemcachedKeyCharacterError: Control characters not allowed
      
      - google 了一下, 虽然问题背景不同, 但看到有些问题的原因是空格引发的, 所以尝试将key也就是时间里的空格都删除, 好了!
+     - 将数据保存到本地文件中
+     
+        > dev_server.py --kvdb-file=/Users/xpgeng/kvdb/local/kvdb.pkl
+        
+     - 注意: 这里要谢绝对路径! 
      - [代码](https://github.com/xpgeng/mydaily-paas/tree/97b5ae72e86316239548df0a2a9db9f2c63ef671)
 
 
@@ -72,7 +77,10 @@
 - [代码](https://github.com/xpgeng/OMOOC2py/commit/a54eb44082a69f1286042a3ceeffef783bfe16d3)
 
 
-###添加Tag
+###添加标签, 分类收集
+- 目前能做到是, 添加tag框, 把key值对应成标签, 输入内容以及时间当做一部分存到value中.
+- 但这样做的后果是tag为同一值时, 会覆盖之前写过的内容.
+- 用了dict使得可以考虑这样得思路, 每次输入, 可以添加一个时间与内容的信息对到标签下.
 
 ###美化模板
 

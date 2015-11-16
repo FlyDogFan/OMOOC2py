@@ -26,14 +26,15 @@ template_loader = FileSystemLoader('views')
 env = Environment(loader=template_loader)
 
 
-def insert_data(data):
+def insert_data():
+     pass insert_data(data):
     """insert data from input to Database
     """
     db = sqlite3.connect('mydaily_data.db')
     c = db.cursor()
     c.execute('INSERT INTO mydaily_data VALUES (?,?)', data)
     db.commit()
-    db.close()
+    db.close() 
 
 
 
@@ -93,7 +94,6 @@ def save_mydaily():
         previous_content = fetch_data()
         template_2 = env.get_template('template.tpl')
         return template_2.render(rows=previous_content)
-
 
 @app.route('/client')
 def client():
