@@ -6,7 +6,12 @@
 
 ![mydaily-paas](http://7xnwxz.com1.z0.glb.clouddn.com/mydaily-paas.png)
 
-##目前功能尚不完善
+##Iteration
+- KVDB
+- 标签分类
+- 数据统计
+- CLI交互
+
 
 ##Author
 - 沈浪

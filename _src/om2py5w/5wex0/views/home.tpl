@@ -7,8 +7,7 @@
 <body>
     <h1 style="left:3px;text-align:center;"> 极简日记</h1>
     <form action="/mydaily" method="post", style="left:3px;text-align:center;">
-    <textarea name= "content" type="text" rows="2" cols="30" > 
-    </textarea>
+    日记: <input name ="content" type="text" />
     Tag: <input name ="tag" type="text" />
     <input value ="保存" type="submit" />
     </form>
