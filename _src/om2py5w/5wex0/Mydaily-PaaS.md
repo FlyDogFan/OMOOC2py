@@ -84,7 +84,6 @@
    - 使用dict
    - 将同一标签下的日期与输入内容写成KV对, 同一放到同一标签下的字典中.
    - 在模板中应用for循环处理字典.
-- <http://blog.mattcrampton.com/post/31254835293/iterating-over-a-dict-in-a-jinja-template>
 - 看到小赖的处理方法, 是把Key设为数字, 标签, 内容, 以及时间都统一写成字典放到Value中, 这显然比我的想法高级些.
 - 之前看PPrint时候其实应该意识到可以这么写. 所以现在准备重新改写.
    - 首先是读取用户的标签, 内容, 
@@ -92,7 +91,7 @@
    - 计数.加入一条计数的KV对放到DB中.这样通过每次读取计数,+1, 就可以确定系统内多少条记录, 同时每条输入会有唯一的一个Key, 这样避免了倍覆盖. 之前我就经常发生覆盖的情况.
    - 按标签分类.同时对应每个标签, 都写入一条KV值, key为标签,  value对应No. 如果下一次输入出现相同标签, 我们就把输入条目对用的No.增加到该标签的value中.
 - 这种方式是每个标签再设一个字典, 可是如果数据量增大的话, 在存储没有问题的情况下, 当然这种方法很简单, 但是每个人可能输入的标签的是不同的, 一万条不同, 就得多一万条标签. 这个时候是不是可以考虑用搜索但不储存的办法, 但搜索的弊端是要把数据遍历一边, 找到相同的标签, 如果数据量特别大的话, 遍历就很耗时间. 这时候就看存储和搜索时间哪个是更限制应用性能的条件.
-- [代码]()
+- [代码](https://github.com/xpgeng/OMOOC2py/tree/master/_src/om2py5w/5wex0)
 ###美化模板
 待完成
 
@@ -113,3 +112,4 @@
 - [SAE官方文档](http://www.sinacloud.com/doc/sae/python/index.html)
 - [SAE-git配置](http://www.sinacloud.com/doc/sae/tutorial/code-deploy.html)
 - [SAE-KVDB官方手册](http://www.sinacloud.com/doc/sae/python/kvdb.html)
+-  <http://blog.mattcrampton.com/post/31254835293/iterating-over-a-dict-in-a-jinja-template>

@@ -23,4 +23,6 @@
   + [How to write a good README](guide/README-guide.md)
   + [A Guide of Oh-my-zsh](guide/Oh-my-zsh-guide.md) 
   + [Tmux配置指南](guide/Tmux-Guide.md)
+- [课程外的思考](draft/README.md)
+  + [思考一](draft/think-out-of-omooc.md) 
 - [有关](ABOUT.md)
