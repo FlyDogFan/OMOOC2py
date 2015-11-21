@@ -58,7 +58,8 @@
         sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
         
         
-       ![done](http://7xnwxz.com1.z0.glb.clouddn.com/intall%20oh%20my%20zsh.png)
+    
+    ![done](http://7xnwxz.com1.z0.glb.clouddn.com/intall%20oh%20my%20zsh.png)
 
 ##Configuration
 
