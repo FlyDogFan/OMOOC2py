@@ -10,6 +10,7 @@ import sae.kvdb
 import time
 from bottle import Bottle, route, abort, request, run
 import xml.etree.ElementTree as ET
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -46,7 +47,7 @@ def save_message(msg):
 def check_event(msg_dict):
     toUser = msg_dict['ToUserName']
     fromUser = msg_dict['FromUserName']
-    if msg_dict['Event'] == "subscribe":
+    if msg_dict['Event'] == "subscribe" :
         reply_text = u'''欢迎订阅, 开始记录你的点点滴滴吧~
                          w: write something
                          r: read what you have written
@@ -75,15 +76,25 @@ def CheckSignature():
         return None
 
 
-@app.route('/', method="POST")
+@app.route('/', method='POST')
 def mydaily():
     msg_dict = parse_message()
-    if msg_dict['Msgtype'] == "event":
-        return check_event( msg_dict )
-    else: 
-        save_message(msg_dict)
-        return 
-
-
+    if msg_dict['Content']:
+        textTpl = """<xml>
+                     <ToUserName><![CDATA[%s]]></ToUserName>
+                     <FromUserName><![CDATA[%s]]></FromUserName>
+                     <CreateTime>%s</CreateTime>
+                     <MsgType><![CDATA[%s]]></MsgType>
+                     <Content><![CDATA[%s]]></Content>
+                     </xml>"""
+        reply_text = u'''欢迎订阅!
+                         w: write something
+                         r: read what you have written
+                         h: help'''
+        echostr = textTpl % (
+            msg_dict['FromUserName'], msg_dict['ToUserName'], int(time.time()), msg_dict['MsgType'],reply_text)
+        return echostr
+    else:
+        return None
 
 application = sae.create_wsgi_app(app)   
