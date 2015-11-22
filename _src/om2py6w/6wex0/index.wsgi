@@ -55,8 +55,8 @@ def check_event(msg_dict):
                  <Content><![CDATA[%s]]></Content>
                  </xml>"""
     if msg_dict['Event'] == "subscribe" :   
-        reply_text = u'''欢迎订阅!
-                        w: write something
+        reply_text = u'''欢迎使用!目前的功能为
+                        w..+日记内容: write something
                         r: read what you have written
                         h: help'''
         echostr = textTpl % (
@@ -71,6 +71,13 @@ def check_event(msg_dict):
         return echostr
     else:
         return None
+
+def read_KVDB():
+    kv = sae.kvdb.Client()
+    content = kv.get_by_prefix('No', 100)
+    return content
+    kv.disconnect_all()
+
 
 @app.route('/')
 def CheckSignature():
@@ -101,8 +108,10 @@ def mydaily():
                  </xml>"""
     if msg_dict['MsgType'] == 'event':
         return check_event(msg_dict)
-    elif msg_dict['Content'][2] == '.':
-        print msg_dict['Content'][2]
+    elif msg_dict['Content'][0] == '.':
+        real_content = msg_dict['Content'][1:]
+        msg_dict['Content'] = real_content
+        print msg_dict
         item_number = save_message(msg_dict)
         reply_text = u'''Roger that. 这是第%s条日记.''' % item_number
         echostr = textTpl % (
@@ -117,7 +126,16 @@ def mydaily():
                 msg_dict['FromUserName'], msg_dict['ToUserName'], int(time.time()),  
                     msg_dict['MsgType'],reply_text)
         return echostr
-    #elif msg_dict['Content'] == 'r':
+    elif msg_dict['Content'] == 'r':
+        db_content = read_KVDB()
+        #reply_text = []
+        all_content = '\n'.join(value['Content'] for key, value in db_content)
+        print all_content
+        reply_text = u'''%s''' % all_content
+        echostr = textTpl % (
+                msg_dict['FromUserName'], msg_dict['ToUserName'], int(time.time()),  
+                    msg_dict['MsgType'],reply_text)
+        return echostr
     else:
         return None
 
