@@ -17,6 +17,7 @@ sys.setdefaultencoding('utf-8')
 
 app = Bottle()
 
+
 def count_items():
     kv = sae.kvdb.Client()
     if kv.get('NumberOfItems'):
@@ -79,21 +80,25 @@ def CheckSignature():
 @app.route('/', method='POST')
 def mydaily():
     msg_dict = parse_message()
-    if msg_dict['Content']:
-        textTpl = """<xml>
-                     <ToUserName><![CDATA[%s]]></ToUserName>
-                     <FromUserName><![CDATA[%s]]></FromUserName>
-                     <CreateTime>%s</CreateTime>
-                     <MsgType><![CDATA[%s]]></MsgType>
-                     <Content><![CDATA[%s]]></Content>
-                     </xml>"""
-        reply_text = u'''欢迎订阅!
-                         w: write something
-                         r: read what you have written
-                         h: help'''
-        echostr = textTpl % (
-            msg_dict['FromUserName'], msg_dict['ToUserName'], int(time.time()), msg_dict['MsgType'],reply_text)
-        return echostr
+    textTpl = """<xml>
+                 <ToUserName><![CDATA[%s]]></ToUserName>
+                 <FromUserName><![CDATA[%s]]></FromUserName>
+                 <CreateTime>%s</CreateTime>
+                 <MsgType><![CDATA[%s]]></MsgType>
+                 <Content><![CDATA[%s]]></Content>
+                 </xml>"""
+    if msg_dict['MsgType'] == 'event':
+        if msg_dict['Event'] == "subscribe" :   
+            reply_text = u'''欢迎订阅!
+                             w: write something
+                             r: read what you have written
+                             h: help'''
+            echostr = textTpl % (
+                msg_dict['FromUserName'], msg_dict['ToUserName'], int(time.time()),  
+                    'text',reply_text)
+            return echostr
+        else:
+            return None
     else:
         return None
 
