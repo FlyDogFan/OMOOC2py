@@ -44,19 +44,31 @@ def save_message(msg):
     key = 'No.' + str(item_number)
     kv.set(key, msg)
     kv.disconnect_all()
+    return item_number
 
 def check_event(msg_dict):
-    toUser = msg_dict['ToUserName']
-    fromUser = msg_dict['FromUserName']
-    if msg_dict['Event'] == "subscribe" :
-        reply_text = u'''欢迎订阅, 开始记录你的点点滴滴吧~
-                         w: write something
-                         r: read what you have written
-                         h: help'''
-        return self.render.reply(fromUser, toUser,int(time.time()),reply_text)
+    textTpl = """<xml>
+                 <ToUserName><![CDATA[%s]]></ToUserName>
+                 <FromUserName><![CDATA[%s]]></FromUserName>
+                 <CreateTime>%s</CreateTime>
+                 <MsgType><![CDATA[%s]]></MsgType>
+                 <Content><![CDATA[%s]]></Content>
+                 </xml>"""
+    if msg_dict['Event'] == "subscribe" :   
+        reply_text = u'''欢迎订阅!
+                        w: write something
+                        r: read what you have written
+                        h: help'''
+        echostr = textTpl % (
+            msg_dict['FromUserName'], msg_dict['ToUserName'], int(time.time()),  
+                    'text',reply_text)
+        return echostr
     elif msg_dict['Event'] == "unsubscribe":
         reply_text = u'''这就退订了? 确定不后悔? 再订还可以呢啊. 没给你拉黑名单!'''
-        return self.render.reply(fromUser,toUser,int(time.time()),reply_text) 
+        echostr = textTpl % (
+                msg_dict['FromUserName'], msg_dict['ToUserName'], int(time.time()),  
+                    'text',reply_text)
+        return echostr
     else:
         return None
 
@@ -88,17 +100,24 @@ def mydaily():
                  <Content><![CDATA[%s]]></Content>
                  </xml>"""
     if msg_dict['MsgType'] == 'event':
-        if msg_dict['Event'] == "subscribe" :   
-            reply_text = u'''欢迎订阅!
-                             w: write something
-                             r: read what you have written
-                             h: help'''
-            echostr = textTpl % (
+        return check_event(msg_dict)
+    elif msg_dict['Content'][2] == '.':
+        print msg_dict['Content'][2]
+        item_number = save_message(msg_dict)
+        reply_text = u'''Roger that. 这是第%s条日记.''' % item_number
+        echostr = textTpl % (
                 msg_dict['FromUserName'], msg_dict['ToUserName'], int(time.time()),  
-                    'text',reply_text)
-            return echostr
-        else:
-            return None
+                    msg_dict['MsgType'],reply_text)
+        return echostr
+    elif msg_dict['Content'] == 'h':
+        reply_text = u'''w: write something
+                         r: read what you have written
+                         h: help'''
+        echostr = textTpl % (
+                msg_dict['FromUserName'], msg_dict['ToUserName'], int(time.time()),  
+                    msg_dict['MsgType'],reply_text)
+        return echostr
+    #elif msg_dict['Content'] == 'r':
     else:
         return None
 
