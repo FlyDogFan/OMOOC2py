@@ -56,7 +56,7 @@ def check_event(msg_dict):
                  </xml>"""
     if msg_dict['Event'] == "subscribe" :   
         reply_text = u'''欢迎使用!目前的功能为
-                        w..+日记内容: write something
+                        .+日记内容: write something
                         r: read what you have written
                         h: help'''
         echostr = textTpl % (
@@ -77,6 +77,16 @@ def read_KVDB():
     content = kv.get_by_prefix('No', 100)
     return content
     kv.disconnect_all()
+
+
+def check_tag(msg_dict_content):
+    number = 0
+    for string in msg_dict_content:
+        number += 1
+        if string == '#':
+            tag = msg_dict_content[number:]
+            return tag,number
+
 
 
 @app.route('/')
@@ -109,34 +119,42 @@ def mydaily():
     if msg_dict['MsgType'] == 'event':
         return check_event(msg_dict)
     elif msg_dict['Content'][0] == '.':
-        real_content = msg_dict['Content'][1:]
+        tag = check_tag( msg_dict['Content'])[0]
+        string_number = check_tag( msg_dict['Content'])[1]
+        real_content = msg_dict['Content'][1:(string_number-1)]
         msg_dict['Content'] = real_content
-        print msg_dict
+        msg_dict['Tag'] = tag
         item_number = save_message(msg_dict)
         reply_text = u'''Roger that. 这是第%s条日记.''' % item_number
         echostr = textTpl % (
-                msg_dict['FromUserName'], msg_dict['ToUserName'], int(time.time()),  
-                    msg_dict['MsgType'],reply_text)
+                msg_dict['FromUserName'], msg_dict['ToUserName'], 
+                int(time.time()), msg_dict['MsgType'],reply_text)
         return echostr
     elif msg_dict['Content'] == 'h':
-        reply_text = u'''w: write something
+        reply_text = u'''.+输入内容: write something
                          r: read what you have written
                          h: help'''
         echostr = textTpl % (
-                msg_dict['FromUserName'], msg_dict['ToUserName'], int(time.time()),  
-                    msg_dict['MsgType'],reply_text)
+                msg_dict['FromUserName'], msg_dict['ToUserName'],
+                int(time.time()), msg_dict['MsgType'],reply_text)
         return echostr
     elif msg_dict['Content'] == 'r':
         db_content = read_KVDB()
-        #reply_text = []
-        all_content = '\n'.join(value['Content'] for key, value in db_content)
+        all_content = '\n'.join(value['Content']+'#Tag:'+ 
+                                value['Tag']+'#' for key, value in db_content)
         print all_content
         reply_text = u'''%s''' % all_content
         echostr = textTpl % (
-                msg_dict['FromUserName'], msg_dict['ToUserName'], int(time.time()),  
-                    msg_dict['MsgType'],reply_text)
+                msg_dict['FromUserName'], msg_dict['ToUserName'], 
+                int(time.time()), msg_dict['MsgType'],reply_text)
         return echostr
     else:
-        return None
+        reply_text = u'''.+输入内容: write something
+                         r: read what you have written
+                         h: help'''
+        echostr = textTpl % (
+                msg_dict['FromUserName'], msg_dict['ToUserName'], 
+                int(time.time()), msg_dict['MsgType'],reply_text)
+        return echostr
 
 application = sae.create_wsgi_app(app)   
