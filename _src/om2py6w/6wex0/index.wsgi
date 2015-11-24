@@ -157,11 +157,13 @@ def mydaily():
                 int(time.time()), msg_dict['MsgType'],reply_text)
         return echostr
     elif msg_dict['Content'] == 'h':
-        reply_text = u'''.+输入内容: write something
-                         r: read what you have written
-                         h: help
-                         d+数字:删除该条笔记
-                         c: clear all'''
+        reply_text = u'''
+        .+输入内容: write something
+        r: read what you have written
+        h: help
+        d+数字:删除该条笔记
+        c: clear all
+        '''
         echostr = textTpl % (
                 msg_dict['FromUserName'], msg_dict['ToUserName'],
                 int(time.time()), msg_dict['MsgType'],reply_text)
@@ -178,7 +180,7 @@ def mydaily():
         return echostr
     elif msg_dict['Content'][0] == 'd': #delete one item
         delete_number = msg_dict['Content'][1:]
-        search_key = 'No.'+delete_numbers
+        search_key = 'No.'+delete_number
         return_text = u'''%s已经删除第%s条日记'''%(delete_item(search_key),
                                     delete_number)
         echostr = textTpl % (
@@ -193,11 +195,13 @@ def mydaily():
                 int(time.time()), msg_dict['MsgType'],result_text)
         return echostr
     else:
-        reply_text = u'''.+输入内容: write something
-                         r: read what you have written
-                         h: help
-                         d+数字:删除该条笔记
-                         c: clear all'''
+        reply_text = u'''
+        .+输入内容: write something
+        r: read what you have written
+        h: help
+        d+数字:删除该条笔记
+        c: clear all
+        '''
         echostr = textTpl % (
                 msg_dict['FromUserName'], msg_dict['ToUserName'], 
                 int(time.time()), msg_dict['MsgType'],reply_text)
