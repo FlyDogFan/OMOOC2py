@@ -98,6 +98,14 @@ def delete_item(search_key):
     kv.disconnect_all()
     return "Done!"
 
+def delete_all():
+    kv = sae.kvdb.Client()
+    keys=kv.getkeys_by_prefix('No', 100)
+    for item in keys:
+        kv.delete(item)
+    kv.disconnect_all()
+    return "Done!"
+
 @app.route('/')
 def CheckSignature():
     token = "xpgeng" 
@@ -161,14 +169,21 @@ def mydaily():
                 int(time.time()), msg_dict['MsgType'],reply_text)
         return echostr
     elif msg_dict['Content'][0] == 'd':
-            delete_number = msg_dict['Content'][1:]
-            search_key = 'No.'+delete_number
-            return_text = u'''%s已经删除第%s条日记'''%(delete_item(search_key),
+        delete_number = msg_dict['Content'][1:]
+        search_key = 'No.'+delete_numbers
+        return_text = u'''%s已经删除第%s条日记'''%(delete_item(search_key),
                                     delete_number)
-            echostr = textTpl % (
+        echostr = textTpl % (
                 msg_dict['FromUserName'], msg_dict['ToUserName'], 
                 int(time.time()), msg_dict['MsgType'],return_text)
-            return echostr
+        return echostr
+    elif msg_dict['Content'] == "c":
+        result = delete_all()
+        result_text = u'''%s已经删除全部内容'''% result
+        echostr = textTpl % (
+                msg_dict['FromUserName'], msg_dict['ToUserName'], 
+                int(time.time()), msg_dict['MsgType'],result_text)
+        return echostr
     else:
         reply_text = u'''.+输入内容: write something
                          r: read what you have written
