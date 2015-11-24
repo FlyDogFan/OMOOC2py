@@ -8,10 +8,16 @@ Author Shenlang
 
 import sys,requests
 import time
+import xml.etree.ElementTree as ET
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 def main():
+    print'''.+输入内容: write something
+            r: read what you have written
+            h: help
+            d+数字:删除该条笔记
+            c: clear all'''
     while True:
         textTpl = """<xml>
                  <ToUserName><![CDATA[%s]]></ToUserName>
@@ -24,8 +30,10 @@ def main():
         send_content = raw_input('> ')
         echostr = textTpl % ('qqqq', 'wwww', int(time.time()), send_content)
         r = requests.post('http://localhost:8080/', echostr)
-        rr = requests.get('http://localhost:8080/')
-        print r.content, rr.content
-
+        root = ET.fromstring(r.content)
+        msg_dict = {}
+        for child in root:
+            msg_dict[child.tag] = child.text
+        print msg_dict['Content']
 if __name__ == '__main__':
     main()
