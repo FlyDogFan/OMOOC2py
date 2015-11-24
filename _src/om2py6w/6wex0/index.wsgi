@@ -81,13 +81,22 @@ def read_KVDB():
 
 def check_tag(msg_dict_content):
     number = 0
-    for string in msg_dict_content:
-        number += 1
-        if string == '#':
-            tag = msg_dict_content[number:]
-            return tag,number
+    if "#" not in msg_dict_content:
+        tag_none = "NULL"
+        return tag_none, number
+    else:
+        for string in msg_dict_content:
+            number += 1
+            if string == '#':
+                tag_exist = msg_dict_content[number:]
+                return tag_exist, number
 
 
+def delete_item(search_key):
+    kv = sae.kvdb.Client()
+    kv.delete(search_key)
+    kv.disconnect_all()
+    return "Done!"
 
 @app.route('/')
 def CheckSignature():
@@ -121,7 +130,10 @@ def mydaily():
     elif msg_dict['Content'][0] == '.':
         tag = check_tag( msg_dict['Content'])[0]
         string_number = check_tag( msg_dict['Content'])[1]
-        real_content = msg_dict['Content'][1:(string_number-1)]
+        if tag == "NULL":
+            real_content = msg_dict['Content'][1:]
+        else:
+            real_content = msg_dict['Content'][1:(string_number-1)]
         msg_dict['Content'] = real_content
         msg_dict['Tag'] = tag
         item_number = save_message(msg_dict)
@@ -148,6 +160,15 @@ def mydaily():
                 msg_dict['FromUserName'], msg_dict['ToUserName'], 
                 int(time.time()), msg_dict['MsgType'],reply_text)
         return echostr
+    elif msg_dict['Content'][0] == 'd':
+            delete_number = msg_dict['Content'][1:]
+            search_key = 'No.'+delete_number
+            return_text = u'''%s已经删除第%s条日记'''%(delete_item(search_key),
+                                    delete_number)
+            echostr = textTpl % (
+                msg_dict['FromUserName'], msg_dict['ToUserName'], 
+                int(time.time()), msg_dict['MsgType'],return_text)
+            return echostr
     else:
         reply_text = u'''.+输入内容: write something
                          r: read what you have written
