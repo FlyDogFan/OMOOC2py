@@ -56,9 +56,11 @@ def check_event(msg_dict):
                  </xml>"""
     if msg_dict['Event'] == "subscribe" :   
         reply_text = u'''欢迎使用!目前的功能为
-                        .+日记内容: write something
-                        r: read what you have written
-                        h: help'''
+                        .+输入内容: write something
+                         r: read what you have written
+                         h: help
+                         d+数字:删除该条笔记
+                         c: clear all'''
         echostr = textTpl % (
             msg_dict['FromUserName'], msg_dict['ToUserName'], int(time.time()),  
                     'text',reply_text)
@@ -153,7 +155,9 @@ def mydaily():
     elif msg_dict['Content'] == 'h':
         reply_text = u'''.+输入内容: write something
                          r: read what you have written
-                         h: help'''
+                         h: help
+                         d+数字:删除该条笔记
+                         c: clear all'''
         echostr = textTpl % (
                 msg_dict['FromUserName'], msg_dict['ToUserName'],
                 int(time.time()), msg_dict['MsgType'],reply_text)
@@ -187,7 +191,9 @@ def mydaily():
     else:
         reply_text = u'''.+输入内容: write something
                          r: read what you have written
-                         h: help'''
+                         h: help
+                         d+数字:删除该条笔记
+                         c: clear all'''
         echostr = textTpl % (
                 msg_dict['FromUserName'], msg_dict['ToUserName'], 
                 int(time.time()), msg_dict['MsgType'],reply_text)
