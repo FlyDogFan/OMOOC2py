@@ -19,6 +19,7 @@ app = Bottle()
 
 
 def count_items():
+    '''calculate the number of items'''
     kv = sae.kvdb.Client()
     if kv.get('NumberOfItems'):
         item_number = 0
@@ -31,6 +32,7 @@ def count_items():
     kv.disconnect_all()
 
 def parse_message():
+    '''transform message into readable one'''
     message = request.body.read()
     root = ET.fromstring(message)
     msg_dict = {}
@@ -47,6 +49,7 @@ def save_message(msg):
     return item_number
 
 def check_event(msg_dict):
+    '''if somebody subscribe this account, then return this message'''
     textTpl = """<xml>
                  <ToUserName><![CDATA[%s]]></ToUserName>
                  <FromUserName><![CDATA[%s]]></FromUserName>
@@ -82,6 +85,7 @@ def read_KVDB():
 
 
 def check_tag(msg_dict_content):
+    '''find tag, if it doesn't exist, set it as NULL'''
     number = 0
     if "#" not in msg_dict_content:
         tag_none = "NULL"
@@ -135,9 +139,9 @@ def mydaily():
                  <MsgType><![CDATA[%s]]></MsgType>
                  <Content><![CDATA[%s]]></Content>
                  </xml>"""
-    if msg_dict['MsgType'] == 'event':
+    if msg_dict['MsgType'] == 'event': #return the welcome message
         return check_event(msg_dict)
-    elif msg_dict['Content'][0] == '.':
+    elif msg_dict['Content'][0] == '.':  # write 
         tag = check_tag( msg_dict['Content'])[0]
         string_number = check_tag( msg_dict['Content'])[1]
         if tag == "NULL":
@@ -162,7 +166,7 @@ def mydaily():
                 msg_dict['FromUserName'], msg_dict['ToUserName'],
                 int(time.time()), msg_dict['MsgType'],reply_text)
         return echostr
-    elif msg_dict['Content'] == 'r':
+    elif msg_dict['Content'] == 'r':  # read all messsage
         db_content = read_KVDB()
         all_content = '\n'.join(value['Content']+'#Tag:'+ 
                                 value['Tag']+'#' for key, value in db_content)
@@ -172,7 +176,7 @@ def mydaily():
                 msg_dict['FromUserName'], msg_dict['ToUserName'], 
                 int(time.time()), msg_dict['MsgType'],reply_text)
         return echostr
-    elif msg_dict['Content'][0] == 'd':
+    elif msg_dict['Content'][0] == 'd': #delete one item
         delete_number = msg_dict['Content'][1:]
         search_key = 'No.'+delete_numbers
         return_text = u'''%s已经删除第%s条日记'''%(delete_item(search_key),
@@ -181,7 +185,7 @@ def mydaily():
                 msg_dict['FromUserName'], msg_dict['ToUserName'], 
                 int(time.time()), msg_dict['MsgType'],return_text)
         return echostr
-    elif msg_dict['Content'] == "c":
+    elif msg_dict['Content'] == "c":  # clear all
         result = delete_all()
         result_text = u'''%s已经删除全部内容'''% result
         echostr = textTpl % (
