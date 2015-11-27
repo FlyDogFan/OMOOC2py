@@ -1,7 +1,7 @@
 import time
-from date import *
+from datetime import *
 from time import sleep
-now1 = time.time()
+#now1 = time.time()
 #now4 = time.ctime(now1)
 #print now4 
 
@@ -10,7 +10,7 @@ now1 = time.time()
 
 #sleep(1)
 
-now3 = time.localtime()
+#now3 = time.localtime()
 #now5 = time.asctime(now3)
 #print now5
 
@@ -21,10 +21,7 @@ now3 = time.localtime()
 #otherStyleTime = time.strftime("%Y-%m-%d %H:%M:%S", timeArray)
 #print otherStyleTime
 
-date1 = datetime.date
-print date1
-
-
+print timedelta(days=365)+timedelta(days=365)
 
 
 
