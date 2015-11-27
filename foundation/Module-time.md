@@ -1,4 +1,4 @@
-# Module: time and datetime
+# Modules: time and datetime
 ##1. time stamp
 - 在进行微信开发过程中, 发现微信传输的XML文件中, `creatTime`使用的是timestamp(时间戳).
 - 查看当前时刻的时间戳.
@@ -35,6 +35,4 @@
 
 ##更新
 151126 编辑
-
-
-    
+151127 更新
