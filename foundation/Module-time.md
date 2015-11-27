@@ -51,9 +51,22 @@
        
     - `timedelta(days=365).days`  
         - 将数字提取出来.
+##3. date
+- 只有年月日信息.
+- 常用函数
+   - `date(year, month, day)` 为date赋值. 
+   - `date.today()` 查看今天日期.
+   - `date.fromtimestamp(timestamp)`将时间戳转化成年月日
+   - date的属性`.year`, `.month`, `.day`. 可以将一条date中的年月日提出来.
+   - +/_`timedelta`
+   - date之间进行加减数乘.
+  
 
-   
 
+
+
+##注意
+- 在边学边coding的过程中, 使用了`from datetime import *`, 终于出现这个弊端, 就是我同时使用 `import time`, 在运行`time.time()`发生了冲突. 原因是: datetime中也有time模块, 但是没有`.time()`这一属性.因此, 真的要尽量少用 `from XXX import *`.
 
 ##更新
 151126 编辑  

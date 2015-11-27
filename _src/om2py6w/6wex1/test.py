@@ -1,7 +1,7 @@
 import time
-from datetime import *
+from datetime import date,timedelta
 from time import sleep
-#now1 = time.time()
+now1 = time.time()
 #now4 = time.ctime(now1)
 #print now4 
 
@@ -21,7 +21,13 @@ from time import sleep
 #otherStyleTime = time.strftime("%Y-%m-%d %H:%M:%S", timeArray)
 #print otherStyleTime
 
-print timedelta(days=365)+timedelta(days=365)
+#print timedelta(days=365)+timedelta(days=365)
+
+date1 = date.today()
+timedelta7 = timedelta(days=100)
+date2 = date1 + timedelta7
+date3 = date(2015, 12, 8)
+print date2
 
 
 
