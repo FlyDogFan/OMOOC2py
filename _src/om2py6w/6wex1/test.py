@@ -23,11 +23,12 @@ now1 = time.time()
 
 #print timedelta(days=365)+timedelta(days=365)
 
-date1 = date.today()
-timedelta7 = timedelta(days=100)
-date2 = date1 + timedelta7
-date3 = date(2015, 12, 8)
-print date2
+#date1 = date.today()
+#timedelta7 = timedelta(days=100)
+#date2 = date1 + timedelta7
+#date3 = date(2015, 12, 8)
+#date4 = date3.strftime("%Y:%m:%d")
+print date4
 
 
 
