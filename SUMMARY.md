@@ -7,6 +7,7 @@
   + [3wd4 Note](0MOOC/3wd4.md)
   + [4wd4 Note](0MOOC/4wd4.md)
   + [5wd3 Note](0MOOC/5wd3.md)
+  + [6wd4 Note](0MOOC/6wd4.md)
 - [Foundation](foundation/README.md)
   + [Class 学习笔记](foundation/Class.md)
   + [time 学习笔记](foundation/Module-time.md) 
