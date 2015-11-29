@@ -1,5 +1,5 @@
 import time
-from datetime import date,timedelta
+from datetime import date,timedelta, datetime
 from time import sleep
 now1 = time.time()
 #now4 = time.ctime(now1)
@@ -28,7 +28,13 @@ now1 = time.time()
 #date2 = date1 + timedelta7
 #date3 = date(2015, 12, 8)
 #date4 = date3.strftime("%Y:%m:%d")
-print date4
+
+#d = datetime.today()
+
+d = datetime.fromtimestamp(now1)
+d2 = d.time()
+d3 = d2.tzname()
+print d3
 
 
 

@@ -70,14 +70,30 @@
      > date = d.strftime("%Y/%m/%d")
      > print date 
   
-  - 
+
+##4. datetime
+- 类似于`date`, 区别在于该module还包含时刻信息.
+- 常用function
+   - `datetime.today()`
+     - print后的格式类似于`2015-11-29 15:53:47.629477`
+   - `datetime.fromtimestamp(timestamp)`   
+     - 也可以将时间戳转换成日期和时刻.
+   - 其他的一些属性类似`date`.
+   - `.timetuple()`
+     - 将datetime转化成list. 所有信息可以被循环打印出来 
 
 
+##5. time
+- `datetime.time()`
+   - 将datetime中的时间部分提取出来.
+
+  
 
 
 ##注意
 - 在边学边coding的过程中, 使用了`from datetime import *`, 终于出现这个弊端, 就是我同时使用 `import time`, 在运行`time.time()`发生了冲突. 原因是: datetime中也有time模块, 但是没有`.time()`这一属性.因此, 真的要尽量少用 `from XXX import *`.
 
 ##更新
-151126 编辑  
-151127 更新
+151126 编辑   
+151127 更新  
+151129 更新
