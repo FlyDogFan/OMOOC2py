@@ -31,11 +31,7 @@ now1 = time.time()
 
 #d = datetime.today()
 
-d = datetime.fromtimestamp(now1)
-d2 = d.time()
-d3 = d2.tzname()
-print d3
-
+print sum(range(1, 11))
 
 
 
