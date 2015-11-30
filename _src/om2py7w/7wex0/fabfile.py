@@ -12,7 +12,7 @@ def git(m='This guy left nothing to decribe this commit!'):
 		    '&& echo "{now}""\t{msg}" >> fab.txt'
 		    '&& git add .'
 		    '&& git commit -am "{msg}"'
-		    '&& git push'
+		    '&& git push origin master'
 		    '&& date'.format(now = now, msg = m )
         )
 
