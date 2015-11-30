@@ -18,6 +18,7 @@
   + [MyDaily-Web](_src/om2py4w/4wex0/Mydaily-web-guide.md)
   + [MyDaily-PaaS](_src/om2py5w/5wex0/Mydaily-PaaS.md)
   + [MyDaily-Wechat](_src/om2py6w/6wex0/Mydaily-wechat.md)
+  + [MyDaily-Android](_src/om2py7w/7wex0/Mydaily-Android.md)
 - [积累](draft/README.md)
   + [每周一逛](surf-others-repo/README.md)
      + [2nd Week](surf-others-repo/2wd4.md)
