@@ -16,7 +16,7 @@ def _touch(m="nothing left..."):
     now = datetime.today()
     local('pwd'	
     	    '&& touch commit.log'
-		    '&& echo "{now}""\t{msg}" >> fab.txt'
+		    '&& echo "{now}""\t{msg}" >> commit.log'
 		    '&& date'.format(now = now, msg = m)
 		)
 
