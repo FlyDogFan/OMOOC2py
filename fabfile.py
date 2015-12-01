@@ -28,7 +28,7 @@ def _touch(m="nothing left..."):
     number = _count()
     local('pwd'	
     	    '&& touch commit.log'
-		    '&& echo "{number}""\t{now}""\t{msg}@xpgeng" >> commit.log'
+		    '&& echo "{number}\t{now}""\t{msg}@xpgeng" >> commit.log'
 		    '&& date'.format(number = number, now = now, msg = m)
 		)
 
