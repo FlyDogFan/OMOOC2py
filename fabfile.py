@@ -15,7 +15,7 @@ def _count():
 		if not lines:
 			return 1
 		else:
-			number = 0
+			number = 1
 			for line in lines:
 				number += 1
 			return number
