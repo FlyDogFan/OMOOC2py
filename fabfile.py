@@ -15,7 +15,7 @@ def _touch(m="nothing left..."):
 	'''
     now = datetime.today()
     local('pwd'	
-    	    '&& touch fab.txt'
+    	    '&& touch commit.log'
 		    '&& echo "{now}""\t{msg}" >> fab.txt'
 		    '&& date'.format(now = now, msg = m)
 		)
@@ -30,7 +30,3 @@ def _git(m='This guy left nothing to decribe this commit!'):
 		    '&& git push origin master'
 		    '&& date'.format(msg = m)
         )
-
-
-def chaos():
-    local('date')
