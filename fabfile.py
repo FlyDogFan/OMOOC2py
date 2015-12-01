@@ -10,7 +10,7 @@ def deploy(m='This guy left nothing to decribe this commit!'):
     _git(m)
 
 def _count():
-	with open('commit.log', 'r') as f:
+	with open('commit.log', 'rw') as f:
 		lines = f.readlines()
 		if not lines:
 			return 1
@@ -28,7 +28,7 @@ def _touch(m="nothing left..."):
     number = _count()
     local('pwd'	
     	    '&& touch commit.log'
-		    '&& echo "{number}\t""{now}""\t{msg}" >> commit.log'
+		    '&& echo "{number}""\t{now}""\t{msg}" >> commit.log'
 		    '&& date'.format(number = number, now = now, msg = m)
 		)
 
