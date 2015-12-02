@@ -53,3 +53,6 @@
 ##更新
 
 ##References
+- [Qpython](http://qpython.org/)
+- [Bottle-templates](http://bottlepy.org/docs/dev/tutorial.html#templates)
+- [sqlite3](https://docs.python.org/2/library/sqlite3.html)

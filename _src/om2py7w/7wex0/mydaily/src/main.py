@@ -134,19 +134,6 @@ def save_mydaily():
         return template(ROOT+'/template.html', rows=previous_content)
 
 
-@app.route('/client')
-def client():
-    """This is designed for terminal interaction.
-    """
-    content = ''
-    db = sqlite3.connect('mydaily_data.db')
-    c = db.cursor()
-    c.execute('SELECT * FROM mydaily_data;')
-    content = '\n'.join([row[0]+':'+row[1]+'>>>'+row[2] for row in c.fetchall()])# should be modified
-    c.close()
-    return content
-
-
 try:
     server = MyWSGIRefServer(host="0.0.0.0", port="9999")
     app.run(server=server,reloader=False)
