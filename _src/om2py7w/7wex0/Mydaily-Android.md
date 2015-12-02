@@ -1,13 +1,17 @@
 #Mydaily-Android
 ##背景
+像大妈所说, 终于期待的Android版本来了.
 
+之前总觉得Android或者iOS开发就像神秘森林, 不知道里面有什么, 远远看去烟雾缭绕甚是迷人, 然后又总觉烟雾背后竟使悬崖峭壁.
 
-- Tools
-     
-         Mirrorop
-         
-     
-  
+于是在这样的心情下开始了这周的开发任务. 
+ 
+        系统: Mac OSX 10.11
+        Terminal:  iTerm2
+        Editor: Sublime Text
+        Mobilephone:  米3
+        Script engine: Qpython
+        
 
 ##功能
     - 在手机端每次接收一行的文本(不包含表情/图片/声音/视频...)
@@ -38,7 +42,7 @@
    - 同时修改main.py和template. 因为此时写入和读取数据库, 都变成了三列: "time", "content", "tag".
    - [代码](https://github.com/xpgeng/OMOOC2py/commit/756bd849673c2d74f75fb84d18181d9a841a9c43) 
     
-- 链接SAE
+- 连接SAE
    - 我的理解是, 完全可以讲手机端当做是SAEserver端的一个client端. 只不过是这个client端带有自己的模板, 能讲请求的的数据显示在手机页面而已. 按着这样的理解, 我只需要将之前几周任务的client端代码补充进main.py即可.
    - 需要`requests`库.
    - 因为考虑到要跟微信兼容, 又为了偷懒;-),,, 所以决定使用XML格式传输信息.
@@ -47,10 +51,15 @@
    - [代码](https://github.com/xpgeng/OMOOC2py/commit/69f5474f4cddb38921cf016fca37f2319988dfbd) 
 
 ##体会
-
+- 这次又在配置上浪费了一些时间. 我自己的感觉是, 一涉及到配置, 有些时候如果教程不够详细, 很容易就走到坑里. 而且在配置过程中, 会觉得很简单, 导致某些地方看的不够仔细, 也很容易掉坑.
+- 就web app而言, 用python开发非常便捷, 如果熟练可以迅速开发出一款应用的雏形.
+- 
 
 
 ##更新
+151129  编辑  
+151201  更新  
+151202  更新 sae
 
 ##References
 - [Qpython](http://qpython.org/)
