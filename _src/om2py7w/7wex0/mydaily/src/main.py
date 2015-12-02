@@ -7,16 +7,15 @@ Mydaily-Android
 Author Shenlang
 """
 
-import sys, sqlite3
+import sys, sqlite3, os
 from bottle import Bottle, route, abort, request, response, template, ServerAdapter
-#from gevent import monkey;monkey.patch_all()
 from datetime import date
-
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-app = Bottle()
+ROOT = os.path.dirname(os.path.abspath(__file__))
+
 
 class MyWSGIRefServer(ServerAdapter):
     server = None
@@ -37,8 +36,6 @@ class MyWSGIRefServer(ServerAdapter):
         #self.server.shutdown()
         self.server.server_close() 
         print "# QWEBAPPEND"
-
-
 
 
 def insert_data(data):
@@ -85,12 +82,14 @@ def chech_login(username, password):
 #        response.set_header('Location', '/mydaily')
 #    else:
 #        return "<p>Login failed.</p>"
+app = Bottle()
+
 @app.route('/')
 @app.route('/mydaily')
 def mydaily():
     """home page
     """
-    return template('home.html')
+    return template(ROOT+'/home.html')
     
 
 @app.route('/mydaily', method='POST')
@@ -105,7 +104,7 @@ def save_mydaily():
         data = now, daily_content.decode("utf-8")
         insert_data(data)
         previous_content = fetch_data()
-        return template('template.html', rows=previous_content)
+        return template(ROOT+'/template.html', rows=previous_content)
 
 @app.route('/client')
 def client():

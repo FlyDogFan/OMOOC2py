@@ -11,3 +11,4 @@ date,:WOW
 2015-12-02 15:38:27.827957	1st version of mydaily-android
 2015-12-02 16:19:59.624840	modify the tamplates
 2015-12-02 16:32:28.449248	modify the code of server 
+2015-12-02 16:59:15.551086	use absolute dir to render templates 
