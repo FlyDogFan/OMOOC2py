@@ -8,3 +8,4 @@ date,:WOW
 2015-11-30 16:53:40.471711	create deploy
 2015-11-30 20:15:35.053678	add some basic files
 2015-12-02 14:59:57.763720	add the process to deploy mirrorop
+2015-12-02 15:38:27.827957	1st version of mydaily-android
