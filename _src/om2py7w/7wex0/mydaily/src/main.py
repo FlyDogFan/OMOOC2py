@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #qpy:webapp:Mydaily
 #qpy:fullscreen
-#qpy://127.0.0.1:8080/
+#qpy://0.0.0.0:9999/
 """
 Mydaily-Android
 Author Shenlang
@@ -9,12 +9,21 @@ Author Shenlang
 
 import sys, sqlite3, os
 from bottle import Bottle, route, abort, request, response, template, ServerAdapter
-from datetime import date
+import time
+import requests
+import xml.etree.ElementTree as ET
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
+textTpl = """<xml>
+                <ToUserName><![CDATA[%s]]></ToUserName>
+                <FromUserName><![CDATA[%s]]></FromUserName>
+                <CreateTime>%s</CreateTime>
+                <MsgType><![CDATA[text]]></MsgType>
+                <Content><![CDATA[%s]]></Content>
+             </xml>"""
 
 
 class MyWSGIRefServer(ServerAdapter):
@@ -66,6 +75,13 @@ def chech_login(username, password):
         return False
     
 
+#def all_tags():
+#    db = sqlite3.connect(ROOT+'/mydaily_data.db')
+#    c = db.cursor()
+#    c.execute('SELECT 'tag' FROM mydaily_data')
+#    b = c.fetchall()
+#    return b
+
 #@app.route('/login')
 #def login():
 #    """use bootstrap to design a homepage
@@ -96,12 +112,23 @@ def mydaily():
 def save_mydaily():
     """ receive input and show database content in the browser
     """ 
-    daily_content = request.forms.get('content')
-    tag = request.forms.get('tag')
-    now = date.today()
-    #print "srv.got:", data
-    if daily_content:
-        data = now, daily_content.decode("utf-8"),tag.decode("utf-8")
+    content = request.forms.get('content')
+    tag = request.forms.get('tag') 
+    now = time.time()
+    if content in ['r','h','c']:
+        echostr = textTpl % ('server', 'phone', int(time.time()), content)
+        r = requests.post('http://mydailywechat.sinaapp.com/', echostr)
+        root = ET.fromstring(r.content)
+        msg_dict = {}
+        for child in root:
+            msg_dict[child.tag] = child.text
+        return template(ROOT+'/whole.html', content = msg_dict['Content'])
+    #I didn't add the function of deleting some item    
+    else:
+        content_tag= ".%s#%s" %(content, tag)
+        echostr = textTpl % ('server', 'phone', int(time.time()), content_tag)
+        requests.post('http://mydailywechat.sinaapp.com/', echostr)
+        data = now, content.decode('utf-8'), tag.decode('utf-8')
         insert_data(data)
         previous_content = fetch_data()
         return template(ROOT+'/template.html', rows=previous_content)
@@ -115,13 +142,13 @@ def client():
     db = sqlite3.connect('mydaily_data.db')
     c = db.cursor()
     c.execute('SELECT * FROM mydaily_data;')
-    content = '\n'.join([row[0]+':'+row[1] for row in c.fetchall()])# should be modified
+    content = '\n'.join([row[0]+':'+row[1]+'>>>'+row[2] for row in c.fetchall()])# should be modified
     c.close()
     return content
 
 
 try:
-    server = MyWSGIRefServer(host="127.0.0.1", port="8080")
+    server = MyWSGIRefServer(host="0.0.0.0", port="9999")
     app.run(server=server,reloader=False)
 except Exception,ex:
     print "Exception: %s" % repr(ex)

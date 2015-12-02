@@ -38,7 +38,11 @@
    - 同时修改main.py和template. 因为此时写入和读取数据库, 都变成了三列: "time", "content", "tag".
    - [代码](https://github.com/xpgeng/OMOOC2py/commit/756bd849673c2d74f75fb84d18181d9a841a9c43) 
     
-- 
+- 链接SAE
+   - 我的理解是, 完全可以讲手机端当做是SAEserver端的一个client端. 只不过是这个client端带有自己的模板, 能讲请求的的数据显示在手机页面而已. 按着这样的理解, 我只需要将之前几周任务的client端代码补充进main.py即可.
+   - 需要`requests`库.
+   - 因为考虑到要跟微信兼容, 所以决定使用XML格式传输信息.
+   -  
 
 ##体会
 

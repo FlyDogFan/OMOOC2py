@@ -207,4 +207,13 @@ def mydaily():
                 int(time.time()), msg_dict['MsgType'],reply_text)
         return echostr
 
+
+@app.route('/phone', method='POST')
+    
+    
+
+
+
+
+   
 application = sae.create_wsgi_app(app)   
