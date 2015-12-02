@@ -43,7 +43,7 @@ def insert_data(data):
     """
     db = sqlite3.connect(ROOT+'/mydaily_data.db')
     c = db.cursor()
-    c.execute('INSERT INTO mydaily_data VALUES (?,?)', data)
+    c.execute('INSERT INTO mydaily_data VALUES (?,?,?)', data)
     db.commit()
     db.close() 
 
@@ -97,14 +97,15 @@ def save_mydaily():
     """ receive input and show database content in the browser
     """ 
     daily_content = request.forms.get('content')
+    tag = request.forms.get('tag')
     now = date.today()
-    data = daily_content
     #print "srv.got:", data
     if daily_content:
-        data = now, daily_content.decode("utf-8")
+        data = now, daily_content.decode("utf-8"),tag.decode("utf-8")
         insert_data(data)
         previous_content = fetch_data()
         return template(ROOT+'/template.html', rows=previous_content)
+
 
 @app.route('/client')
 def client():
@@ -114,7 +115,7 @@ def client():
     db = sqlite3.connect('mydaily_data.db')
     c = db.cursor()
     c.execute('SELECT * FROM mydaily_data;')
-    content = '\n'.join([row[0]+':'+row[1] for row in c.fetchall()])
+    content = '\n'.join([row[0]+':'+row[1] for row in c.fetchall()])# should be modified
     c.close()
     return content
 
