@@ -41,7 +41,7 @@ class MyWSGIRefServer(ServerAdapter):
 def insert_data(data):
     """insert data from input to Database
     """
-    db = sqlite3.connect('mydaily_data.db')
+    db = sqlite3.connect(ROOT+'/mydaily_data.db')
     c = db.cursor()
     c.execute('INSERT INTO mydaily_data VALUES (?,?)', data)
     db.commit()
@@ -52,7 +52,7 @@ def insert_data(data):
 def fetch_data():
     """ fetch data from database
     """
-    db = sqlite3.connect('mydaily_data.db')
+    db = sqlite3.connect(ROOT+'/mydaily_data.db')
     c = db.cursor()
     c.execute('SELECT * FROM mydaily_data')
     b = c.fetchall()
@@ -89,7 +89,7 @@ app = Bottle()
 def mydaily():
     """home page
     """
-    return template(ROOT+'/home.html')
+    return template(ROOT+'/index.html')
     
 
 @app.route('/mydaily', method='POST')

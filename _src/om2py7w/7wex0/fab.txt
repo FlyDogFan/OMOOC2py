@@ -12,3 +12,4 @@ date,:WOW
 2015-12-02 16:19:59.624840	modify the tamplates
 2015-12-02 16:32:28.449248	modify the code of server 
 2015-12-02 16:59:15.551086	use absolute dir to render templates 
+2015-12-02 17:13:34.028442	change home.html to index.html and now can be displayed on the phone 
