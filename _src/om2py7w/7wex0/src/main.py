@@ -12,17 +12,14 @@ Start: 2015.11.30
 
 import sys, sae
 import sae.kvdb
-from bottle import Bottle, route, abort, request, run  
-from jinja2 import Template, Environment, PackageLoader ,FileSystemLoader
+from bottle import Bottle, route, abort, request, run, template, redirect, debug  
+#from jinja2 import Template, Environment, PackageLoader ,FileSystemLoader
 from time import strftime, localtime
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 app = Bottle()
-
-template_loader = FileSystemLoader('views')
-env = Environment(loader=template_loader)
 
 
 def classify_items(tag, item):
@@ -109,9 +106,7 @@ def save_mydaily():
     tag = check_tags(tag)
     collect_tags(tag)
     save_and_classify(content, tag)
-    previous_content = read_KVDB()
- #   for k,v in previous_content:
- #       print k,v    
+    previous_content = read_KVDB()   
     template_2 = env.get_template('template.tpl')
     return template_2.render(rows=previous_content)
         

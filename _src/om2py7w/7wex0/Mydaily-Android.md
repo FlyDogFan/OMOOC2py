@@ -4,6 +4,9 @@
 
 - Tools
      
+         Mirrorop
+         
+     
   
 
 ##功能
@@ -16,7 +19,13 @@
 
 
 ##过程
-- 
+- 安装Mirrorop, 将手机屏幕投到电脑中, 以便调试.
+   - 软件[下载地址](http://www.mirrorop.com/product_mac_Receiver.html)
+   - 手机下载sender文件, 电脑安装receiver文件.
+   - 之前分错了sender和receiver... 这种坑真的是不踩也罢. 好伤啊...!!
+
+- 修改5w任务代码, 使之能够运行在手机端.
+   -   
 
 ##体会
 
