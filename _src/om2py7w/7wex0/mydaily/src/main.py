@@ -8,8 +8,8 @@ Author Shenlang
 """
 
 import sys, sqlite3
-from bottle import Bottle, route, abort, request, response, template
-from gevent import monkey;monkey.patch_all()
+from bottle import Bottle, route, abort, request, response, template, ServerAdapter
+#from gevent import monkey;monkey.patch_all()
 from datetime import date
 
 
@@ -17,6 +17,28 @@ reload(sys)
 sys.setdefaultencoding('utf-8')
 
 app = Bottle()
+
+class MyWSGIRefServer(ServerAdapter):
+    server = None
+
+    def run(self, handler):
+        from wsgiref.simple_server import make_server, WSGIRequestHandler
+        if self.quiet:
+            class QuietHandler(WSGIRequestHandler):
+                def log_request(*args, **kw): pass
+            self.options['handler_class'] = QuietHandler
+        self.server = make_server(self.host, self.port, handler, **self.options)
+        self.server.serve_forever()
+
+    def stop(self):
+        #sys.stderr.close()
+        import threading 
+        threading.Thread(target=self.server.shutdown).start() 
+        #self.server.shutdown()
+        self.server.server_close() 
+        print "# QWEBAPPEND"
+
+
 
 
 def insert_data(data):
@@ -98,12 +120,9 @@ def client():
     return content
 
 
-from gevent.pywsgi import WSGIServer
-from geventwebsocket.handler import WebSocketHandler
-
-server = WSGIServer(('127.0.0.1', 8080), app,
-                    handler_class=WebSocketHandler)
-
-server.serve_forever()
-
+try:
+    server = MyWSGIRefServer(host="127.0.0.1", port="8080")
+    app.run(server=server,reloader=False)
+except Exception,ex:
+    print "Exception: %s" % repr(ex)
 
