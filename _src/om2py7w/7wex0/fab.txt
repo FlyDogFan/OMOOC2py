@@ -14,3 +14,4 @@ date,:WOW
 2015-12-02 16:59:15.551086	use absolute dir to render templates 
 2015-12-02 17:13:34.028442	change home.html to index.html and now can be displayed on the phone 
 2015-12-02 17:40:53.410840	add tag 
+2015-12-02 17:45:50.676068	update Mydaily-Android.md 

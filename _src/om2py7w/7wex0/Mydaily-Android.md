@@ -33,7 +33,12 @@
    - 这次终于能够显示了. ;-)
    - [代码](https://github.com/xpgeng/OMOOC2py/commit/3f84a0f53e2f6bea6a7b607c09c9ea4ed9d7c37d#diff-90a244f7292321d7fd567f962f65eb34)
 
--  
+- 添加Tag, 修改Database
+   - 只需要在生成Database的脚本里做修改, 多添加一列"tag"
+   - 同时修改main.py和template. 因为此时写入和读取数据库, 都变成了三列: "time", "content", "tag".
+   - [代码](https://github.com/xpgeng/OMOOC2py/commit/756bd849673c2d74f75fb84d18181d9a841a9c43) 
+    
+- 
 
 ##体会
 
