@@ -6,7 +6,7 @@
 - 申请微信公共账号
 - SAE云平台
 - 将`index.wsgi`以及`config.yaml`部署到SAE云平台
-- 在微信公众账号后台进行token确认.具体才能见[教程]()
+- 在微信公众账号后台进行token确认.具体才能见[教程](https://xpgeng.gitbooks.io/omooc2py/content/_src/om2py6w/6wex0/Mydaily-wechat.html)
 - 准备工作完毕后, 即可在公众账号中记录笔记.
 
 
