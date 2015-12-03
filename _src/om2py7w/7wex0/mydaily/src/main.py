@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 #qpy:webapp:Mydaily
 #qpy:fullscreen
-#qpy://127.0.0.1:8080/
+#qpy://127.0.0.1:8081/
 """
 Mydaily-Android
 Author Shenlang
 """
-
-import sys, sqlite3, os
 from bottle import Bottle, route, abort, request, response, template, ServerAdapter
+
+import sys
+import sqlite3
+import os
 import time
 import requests
 import xml.etree.ElementTree as ET
@@ -122,7 +124,7 @@ def save_mydaily():
         msg_dict = {}
         for child in root:
             msg_dict[child.tag] = child.text
-        return template(ROOT+'/whole.html', content = msg_dict['Content'])
+        return template(ROOT+'/whole.html', content=msg_dict['Content'])
     #I didn't add the function of deleting some item    
     else:
         content_tag= ".%s#%s" %(content, tag)
@@ -135,7 +137,7 @@ def save_mydaily():
 
 
 try:
-    server = MyWSGIRefServer(host="127.0.0.1", port="8080")
+    server = MyWSGIRefServer(host="127.0.0.1", port="8081")
     app.run(server=server,reloader=False)
 except Exception,ex:
     print "Exception: %s" % repr(ex)
