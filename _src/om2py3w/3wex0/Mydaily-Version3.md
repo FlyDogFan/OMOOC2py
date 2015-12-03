@@ -204,7 +204,6 @@ socket.error: [Errno 48] Address already in use
        - 用`$ kill  端口号` 即可杀死进程.
        - 还可以用如下命令, 确定sever的端口
           > $ python -m SimpleHTTPServer 8910
-###
 
 
 ##Idea
