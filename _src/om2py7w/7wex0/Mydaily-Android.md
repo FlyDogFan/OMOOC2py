@@ -45,15 +45,19 @@
 - 连接SAE
    - 我的理解是, 完全可以讲手机端当做是SAEserver端的一个client端. 只不过是这个client端带有自己的模板, 能讲请求的的数据显示在手机页面而已. 按着这样的理解, 我只需要将之前几周任务的client端代码补充进main.py即可.
    - 需要`requests`库.
+      - 因为是要在手机上运行, 所以还要在Qpython里下载这个库.
+      - 打开Qpython, 在库里点击`pip console`就可以用`pip`安装相应的库. 
    - 因为考虑到要跟微信兼容, 又为了偷懒;-),,, 所以决定使用XML格式传输信息.
    - 又增加一个模板, 用来显示全部内容.
    - 这样, 只要仿照微信的交互口令, 就可以完成简单的手机端交互.
    - [代码](https://github.com/xpgeng/OMOOC2py/commit/69f5474f4cddb38921cf016fca37f2319988dfbd) 
 
+- 界面美化(未完成)
+
 ##体会
 - 这次又在配置上浪费了一些时间. 我自己的感觉是, 一涉及到配置, 有些时候如果教程不够详细, 很容易就走到坑里. 而且在配置过程中, 会觉得很简单, 导致某些地方看的不够仔细, 也很容易掉坑.
 - 就web app而言, 用python开发非常便捷, 如果熟练可以迅速开发出一款应用的雏形.
-- 
+
 
 
 ##更新
@@ -65,3 +69,8 @@
 - [Qpython](http://qpython.org/)
 - [Bottle-templates](http://bottlepy.org/docs/dev/tutorial.html#templates)
 - [sqlite3](https://docs.python.org/2/library/sqlite3.html)
+- 
+
+
+
+

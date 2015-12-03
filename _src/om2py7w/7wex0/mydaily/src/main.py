@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #qpy:webapp:Mydaily
 #qpy:fullscreen
-#qpy://0.0.0.0:9999/
+#qpy://127.0.0.1:8080/
 """
 Mydaily-Android
 Author Shenlang
@@ -135,7 +135,7 @@ def save_mydaily():
 
 
 try:
-    server = MyWSGIRefServer(host="0.0.0.0", port="9999")
+    server = MyWSGIRefServer(host="127.0.0.1", port="8080")
     app.run(server=server,reloader=False)
 except Exception,ex:
     print "Exception: %s" % repr(ex)
