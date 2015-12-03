@@ -9,7 +9,7 @@
         系统: Mac OSX 10.11
         Terminal:  iTerm2
         Editor: Sublime Text
-        Mobilephone:  米3
+        Mobilephone:  Mi3
         Script engine: Qpython
         
 
