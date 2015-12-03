@@ -45,7 +45,7 @@
    - [代码](https://github.com/xpgeng/OMOOC2py/commit/756bd849673c2d74f75fb84d18181d9a841a9c43) 
     
 ###连接SAE
-   - 我的理解是, 完全可以讲手机端当做是SAEserver端的一个client端. 只不过是这个client端带有自己的模板, 能讲请求的的数据显示在手机页面而已. 按着这样的理解, 我只需要将之前几周任务的client端代码补充进main.py即可.
+   - 我的理解是, 完全可以将手机端当做是SAEserver端的一个client端. 只不过是这个client端带有自己的模板, 能将请求的的数据显示在手机页面而已. 按着这样的理解, 我只需要将之前几周任务的client端代码补充进main.py即可.
    - 需要`requests`库.
       - 因为是要在手机上运行, 所以还要在Qpython里下载这个库.
       - 打开Qpython, 在库里点击`pip console`就可以用`pip`安装相应的库.
