@@ -18,6 +18,7 @@ app = Flask(__name__)
 
 def classify_items(tag, item):
     kv = sae.kvdb.Client()
+    print kv.get(tag)
     if kv.get(tag):
         item_in_tag = kv.get(tag).append(item)
         kv.replace(tag, item_in_tag)
@@ -50,7 +51,7 @@ def save_and_classify(content, tag):
     key = 'No.' + str(item_number)
     value = {'time':time, 'content':content, 'tag': tag}
     kv.set(key, value)
-    #classify_items(tag, key)
+    classify_items(tag, key)
     kv.disconnect_all()
 
 #def collect_tags(tag):
