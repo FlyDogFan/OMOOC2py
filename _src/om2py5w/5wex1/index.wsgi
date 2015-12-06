@@ -18,14 +18,15 @@ app = Flask(__name__)
 
 def classify_items(tag, item):
     kv = sae.kvdb.Client()
-    print kv.get(tag)
-    if kv.get(tag):
-        item_in_tag = kv.get(tag).append(item)
-        kv.replace(tag, item_in_tag)
-    else:
+    c = kv.get(str(tag))
+    if not c:
         item_in_tag = []
         item_in_tag.append(item)
-        kv.set(tag, item_in_tag)
+        
+        kv.set(tag, item_in_tag)    
+    else:
+        item_in_tag = c.append(item)
+        kv.replace(tag, item_in_tag)
     kv.disconnect_all()   
 
 def count_items():
@@ -51,8 +52,9 @@ def save_and_classify(content, tag):
     key = 'No.' + str(item_number)
     value = {'time':time, 'content':content, 'tag': tag}
     kv.set(key, value)
-    classify_items(tag, key)
     kv.disconnect_all()
+    classify_items(tag, key)
+    
 
 #def collect_tags(tag):
 #    kv = sae.kvdb.Client()
@@ -99,7 +101,7 @@ def save_mydaily():
     #collect_tags(tag)
     save_and_classify(content, tag)
     previous_content = read_KVDB()
-    print previous_content  
+    print previous_content 
     return render_template('template.html', rows=previous_content)
         
 
