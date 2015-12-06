@@ -1,7 +1,7 @@
 # Summary
 
 - [团队作品迭代](SPH/README.md)
-  + [使用Flask框架]()
+  + [使用Flask框架](SPH/SPH-Flask.md)
 
 - [Weekly Notes](0MOOC/README.md)
   + [0wd4 Note](0MOOC/0wd4.md) 
