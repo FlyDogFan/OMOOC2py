@@ -16,7 +16,7 @@
       - `request.files['XXX']`
 
 ###如何存储图片信息
-- 基本
+- Basic
     - 在html文件`form`中添加`enctype="multipart/form-data"`.只有使用了`multipart/form-data`，才能完整的传递文件数据，进行下面的操作.
     - 此处遇到了第一个bug, 就是如果图片的文件名为中文时, 存储的文件名就只截取后边的扩展名.
         - <http://tuzii.me/diary/52e9a4e49c20116d8ca80dd4/%E8%A7%A3%E5%86%B3fLask%E4%B8%ADsecure_filename%E8%8E%B7%E5%8F%96%E4%B8%AD%E6%96%87%E6%96%87%E4%BB%B6%E5%90%8D%E9%97%AE%E9%A2%98>
@@ -40,7 +40,8 @@
     - 2nd line: 指针对应到文件夹`imges` 
     - 3rd line: 将文件名,文件存到`images`中.
     - 4th line: 返回这个文件名的链接.
-    - 这样, 通过这样一段简单的代码就可以把图片保存到SAE storage中.        
+    - 这样, 通过这样一段简单的代码就可以把图片保存到SAE storage中.
+    - [代码](https://github.com/xpgeng/straypetshelper/commit/7a3552665b4f6e475e4c926e48351df4c71308da)        
   
 ###数据库设计.
 
