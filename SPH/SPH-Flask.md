@@ -44,15 +44,19 @@
     - [代码](https://github.com/xpgeng/straypetshelper/commit/7a3552665b4f6e475e4c926e48351df4c71308da)        
   
 ###数据库设计.
+- 现阶段使用KVDB
 
-
+    > key = strftime("%y%m%d%H%M%S" , localtime())  
+    > value = {'pet_title':pet_title, 'species': species,'location':location, 'tel':tel, 'supplement':supplement,'photo_url':photo_url,'time':time}  
+    
+    - 目前的设计比较简单, 随着功能的增加, 会逐渐修改 
+    
 ###备份
 
 
 ##Debug
 - 图片为中文名称, 不包含任何jpg等等时,会出现错误.
-   -  
-
+- 图片名字如果重复, 则会覆盖之前的存储.
 
 ##Refenrences
 - [Flask官方文档](http://flask.pocoo.org/)

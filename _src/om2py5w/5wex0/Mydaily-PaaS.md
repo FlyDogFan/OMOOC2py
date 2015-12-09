@@ -27,8 +27,7 @@
    - 创建一个新的Git仓库并且添加一个Git远程仓库sae，地址为：https://git.sinacloud.com/App_Name 。
    - 部署Git的主分支（master）的代码到SAE服务器上的版本1中
 
-      >$ touch index.php  
-       $ git add index.php  
+      >$ git add .   
        $ git commit -m"initial commit"  
        $ git push sae master:1  
        
