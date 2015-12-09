@@ -49,14 +49,29 @@
     > key = strftime("%y%m%d%H%M%S" , localtime())  
     > value = {'pet_title':pet_title, 'species': species,'location':location, 'tel':tel, 'supplement':supplement,'photo_url':photo_url,'time':time}  
     
-    - 目前的设计比较简单, 随着功能的增加, 会逐渐修改 
-    
+    - 目前的设计比较简单, 随着功能的增加, 会逐渐修改
+###基本功能
+- 注册
+    - 基于@huijuannan的模板, 修改成了注册的模板, 其中遇到的一个坑
+       - `kv.set(key,value)`一直写不仅数据库, 因为是用`dev_server.py` 本地调试, 所以通过好几次print才确定是什么位置出现问题, 但是查不出原因.
+       - 后来意识到可是key只能写str型, 于是用 type()检查了一下key的类型, 才发现我给的是'unicode', 于是用`str()`变形, Done!
+
+- 登录
+    - 原理跟注册类似, 只需要根据用户名, 找出数据库中的密码是否与输入密码一直即可.
+     
+###Templates
+
+   
 ###备份
 
 
 ##Debug
 - 图片为中文名称, 不包含任何jpg等等时,会出现错误.
 - 图片名字如果重复, 则会覆盖之前的存储.
+- 密码最少输入六位
+- 用户名查重
+- 检查email类型
+- 页面跳转
 
 ##Refenrences
 - [Flask官方文档](http://flask.pocoo.org/)
