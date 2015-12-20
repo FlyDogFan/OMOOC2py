@@ -78,7 +78,7 @@
 - 其中遇到的坑:
    - 在脚本中即用了`requests.post`又用了`requests.get`
    - 然后再不断debug中发现, `get`没有起到任何作用.
-   - 
+   
 - [代码](https://github.com/xpgeng/OMOOC2py/commit/1c8f2543e86665046dc4d26735fc008fc7ffcd30)
 - 注意: 使用时将Client.py中的连接修改能公网连接.
 ###目前还未完善的功能
