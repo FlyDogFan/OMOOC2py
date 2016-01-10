@@ -51,6 +51,12 @@
     > ....def __init__(self, XXX, YYY, ZZZ ):  
       ........BaseClass.__init__(self, XXX, YYY)
 
+
+##怎么用Class
+- 新建一个object, 如果我们对于这个object初始就有一些属性要求, 比如初值, 或者一些method的要求, 那么我们就可以使用一个Class, 通过这个class来建立objects.
+
+
+
 ##优点
 - 代码更整洁, 方便移植和修改.
 - debug非常方便.
