@@ -58,6 +58,7 @@ W$呢? Sorry.....
 |tmux new -s session -d|在后台建立会话 |session|
 |tmux ls |列出会话| session|
 |tmux attach -t session|进入某个会话| session|
+|C+b s  | 现有会话列表|session|
 |C+b c  | (creat)创建一个新的窗口|window|
 |C+b n| (next)切换到下一个窗口|window|
 |C+b p| (previous)切换到上一个窗口|window|
