@@ -104,6 +104,8 @@
           
 - 更改主题只需要更改名称即可.主题列表可以在`~/.oh-my-zsh/themes`中找到, [这里](https://github.com/robbyrussell/oh-my-zsh/wiki/themes)每个主题的图片.
 
+### 一切都配置好后, 使用命令`source ~/.zshrc`更新配置
+
 ##My Configuration
 因为我也是刚刚开始折腾, 目前的配置还很初级, 随着各种类型的编程需求, 也会逐渐丰富配置, 越用越顺手.
 ###Plugins
@@ -158,7 +160,8 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 ##更新
 151104  编辑  
 151105  修改  
-151201  添加"如何更新"   
+151201  添加"如何更新"  
+160404  添加"加载配置"
 
 
 ##References
