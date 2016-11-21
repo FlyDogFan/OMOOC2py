@@ -1,4 +1,5 @@
 # _*_ coding:utf-8 _*_
+
 import sys
 from Tkinter import *
 from time import gmtime, strftime
@@ -25,7 +26,7 @@ class Mydaily(Frame):
 
         self.quit = Button(master, text="quit", command=self.cancel)
         self.quit.pack(pady=5, side=BOTTOM)
-    
+        
     def  read_and_save(self, event):
          self.read_contents(event)
          self.save_and_print_contents(event)

@@ -1,14 +1,16 @@
-#A Guide of Oh-my-zsh
+# A Guide of Oh-my-zsh
 
     工欲善其事，必先利其器!
 
-##Background
-大妈在视频演示展示了酷炫的Bash-it, 其中提到了非常好用的oh-my-Zsh, 其功能与Bash-it相似, 非常强大且都是开源软件.于是, 本着好奇害死猫的精神, 探索一下Oh-my-Zsh.  
+## Background
+
+大妈在视频演示展示了酷炫的 Bash-it, 其中提到了非常好用的 oh-my-Zsh, 其功能与 Bash-it 相似, 非常强大且都是开源软件.于是, 本着好奇害死猫的精神, 探索一下 Oh-my-Zsh.  
 照例:
 
      系统: OS X 10.11
 
-##Introduction
+## Introduction
+
 - Zsh: Z shell
    - 在了解Zsh之前, 先要了解一下什么是`Shell`
       - 看字面意思, 知道他是个`壳`. 是的, 他是Linux\Unix的外壳, 或者说媒介. 我们将命令(CLI-Command Line)输入到这个壳中, 他会将命令转化成系统能理解的语言, 这样我们就可以命令系统去执行一些我们想做的事情.
@@ -21,39 +23,41 @@
       
       - 目前OSX系统默认的都是`bash`这个shell.但是我们现在介绍的这个shell`zsh`, 哼哼, 用了都说好!
    - 更多的了解可以参考这篇[Zsh简介](https://www-s.acm.illinois.edu/workshops/zsh/toc.html)
-      - 这篇出自[Larry P.Schrof](http://www.schrof.net/)之手, 看了下他的自我介绍, 还挺cool的. 写的了程序, 玩得了音乐, 现在就职于Facebook.
-   - 很多人一看到配置Zsh那么复杂繁琐, 基本上`4.2分钟`后, 纷纷关掉页面接着用`Bash`了. 这时候,`Oh-my-zsh`出厂!
+      - 这篇出自[Larry P.Schrof](http://www.schrof.net/)之手, 看了下他的自我介绍, 还挺 cool 的. 写的了程序, 玩得了音乐, 现在就职于 Facebook.
+   - 很多人一看到配置 Zsh 那么复杂繁琐, 基本上`4.2分钟`后, 纷纷关掉页面接着用`Bash`了. 这时候,`Oh-my-zsh`出厂!
 - Oh-my-zsh
      - 让你一边配置`zsh`, 一边喊`Oh!my!Zsh!`.
-     - 是的, 他就是一个管理zsh各种配置的工具, 其中包含了各种函数, 插件, 主题, 而且完全可以各种私人定制.因为他是开源的!
+     - 是的, 他就是一个管理 zsh 各种配置的工具, 其中包含了各种函数, 插件, 主题, 而且完全可以各种私人定制. 因为他是开源的!
      
 
-##Installation
-###zsh
-- 首先要检查是否已经安装Zsh.
+## Installation
+
+### zsh
+- 首先要检查是否已经安装 zsh.
            
         $ zsh --version
         
-- 通常OSX已经安装好zsh, 但如果没有, 请输入以下命令:
+- 通常 OS X 已经安装好 zsh, 但如果没有, 请输入以下命令:
 
         $ sudo apt-get install zsh
         
-- 把zsh设置为默认Shell
+- 把zsh设置为默认 Shell
         
         $ chsh -s $(which zsh)
         
-- 退出再进入Terminal, 检查一下是否已经更改成功
+- 退出再进入 Terminal, 检查一下是否已经更改成功
        
         $  echo $SHELL
         
-- 以上的任何步骤如果出现错误, 42秒内无法解决的话, 请及时Google it.
+- 以上的任何步骤如果出现错误, 42 秒内无法解决的话, 请及时 Google it.
 
-###oh-my-zsh
-- 我们可以通过一下CLI安装
+### oh-my-zsh
+
+- 我们可以通过一下 CLI 安装
    
         sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
         
-        或者
+   或者
         
         sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
         
@@ -158,6 +162,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 - 将本文章push到gitbook一直不成功, 找了半宿加一上午的毛病,才发现文件的首字母大写了, 写到SUMAARY.MD里的是小写的. 虽然本地能够在SUMMARY.MD文件中点击打开打开, 但是push到gitbook后,却识别不了文件! 我这版本退回, 删除, pull, push,一通大招下去, 结果..是这么回事...好了.. 我去吐血了.
 
 ##更新
+161121  修改
 151104  编辑  
 151105  修改  
 151201  添加"如何更新"  
